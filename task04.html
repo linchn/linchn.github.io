@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DIV居中</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #middle{
+            width:400px;
+            height:200px;
+            background-color: #ccc;
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top: -100px;
+            margin-left: -200px;
+            overflow: hidden;
+        }
+        #left{
+            width:100px;
+            height: 100px;
+            background-color: #fc0;
+            float:left;
+            margin-top: -50px;
+            margin-left: -50px;
+            border-radius: 50%;
+        }
+        #right{
+            width:100px;
+            height: 100px;
+            background-color: #fc0;
+            float:right;
+            margin-right: -50px;
+            margin-top: 150px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="middle">
+    <div id="left"></div>
+    <div id="right"></div>
+</div>
+
+</body>
+</html>
