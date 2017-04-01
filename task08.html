@@ -2,30 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>bootstrap</title>
-    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>类Bootstrap栅格布局</title>
     <style>
-        .container-fluid{
-            margin: 10px;
+        *{
+            margin: 0;
+            padding: 0;
+            /*border: 1px solid red;*/
         }
-        .container-fluid .row div div{
+        .container{
+            margin: 10px;
+            text-align: center;
+        }
+        .container *{
+            box-sizing: border-box;
+        }
+        .container .row div div{
             border: 1px solid #999;
             background: #eee;
             height: 50px;
-            margin: 10px -5px;
-            box-sizing: border-box;
+            line-height: 50px;
+        }
+        [class*="col-"]{
+            float: left;
+            padding: 10px;
+        }
+        @media all and (min-width:769px){
+            .col-sm-1{width: 8.33%;}
+            .col-sm-2{width: 16.66%;}
+            .col-sm-3{width: 25%;}
+            .col-sm-4{width: 33.33%;}
+            .col-sm-5{width: 41.66%;}
+            .col-sm-6{width: 50%;}
+            .col-sm-7{width: 58.33%;}
+            .col-sm-8{width: 66.66%;}
+            .col-sm-9{width: 75%;}
+            .col-sm-10{width: 83.33%;}
+            .col-sm-11{width: 91.66%;}
+            .col-sm-12{width: 100%;}
+        }
+        @media all and (max-width:768px){
+            .col-xs-1{width: 8.33%;}
+            .col-xs-2{width: 16.66%;}
+            .col-xs-3{width: 25%;}
+            .col-xs-4{width: 33.33%;}
+            .col-xs-5{width: 41.66%;}
+            .col-xs-6{width: 50%;}
+            .col-xs-7{width: 58.33%;}
+            .col-xs-8{width: 66.66%;}
+            .col-xs-9{width: 75%;}
+            .col-xs-10{width: 83.33%;}
+            .col-xs-11{width: 91.66%;}
+            .col-xs-12{width: 100%;}
         }
     </style>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-sm-4 col-xs-6"><div>A</div></div>
         <div class="col-sm-4 col-xs-6"><div>B</div></div>
