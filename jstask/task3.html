@@ -24,7 +24,6 @@
      -->
 
 </ul>
-
 <button id="sort-btn">排序</button>
 
 <script type="text/javascript">
@@ -71,13 +70,21 @@
         }
     }
     function btnHandle() {
+
         var aqiData = getData();
         aqiData = sortAqiData(aqiData);
         render(aqiData);
     }
     function init() {
         var btn=document.getElementById("sort-btn");
-        btn.setAttribute("onclick","btnHandle();");
+        var re=document.getElementById("refresh");
+        btn.onclick=function () {
+            var resort=document.getElementById("resort");
+            while (resort.firstChild){
+                resort.removeChild(resort.firstChild);
+            }
+            btnHandle();
+        };
         // 在这下面给sort-btn绑定一个点击事件，点击时触发btnHandle函数
     }
     init();
