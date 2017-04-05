@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task4</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #top{
+            margin: 10px;
+        }
+        #top input{
+            background: #fff;
+            border: 1px solid #999;
+            height: 30px;
+            margin-right: 10px;
+        }
+        #main ul{
+            margin-top: 20px;
+            height: 100px;
+            border: 1px solid #999;
+        }
+        #main ul li{
+            width: 20px;
+            display: inline-block;
+            background: red;
+            text-align: center;
+            margin-right: 2px;
+            float: left;
+            font-size: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="top">
+    <input type="text" id="num" placeholder="只能输入数字">
+    <input type="submit" id="inL" value="左侧入">
+    <input type="submit" id="outL" value="左侧出">
+    <input type="submit" id="inR" value="右侧入">
+    <input type="submit" id="outR" value="右侧出">
+</div>
+<div id="main">
+    <ul id="queue"></ul>
+</div>
+<script>
+    var result=document.getElementById("queue");
+    var num=document.getElementById("num");
+    function getNum() {
+        var num=document.getElementById("num");
+        var dat=num.value;
+        if(isNaN(dat)||!dat){
+            alert("请输入正确数字！");
+        }else if(dat<10||dat>100){
+            alert("请输入10到100的数字！");
+        }else{
+            num.value=null;
+            return dat;
+        }
+    }
+    function init() {
+        num.focus();
+        var inL=document.getElementById("inL");
+        var outL=document.getElementById("outL");
+        var inR=document.getElementById("inR");
+        var outR=document.getElementById("outR");
+        //左侧入insert第一个子节点
+        inL.onclick=function () {
+            var max=result.getElementsByTagName("li");
+            if(max.length>=60){
+                alert("最大60组数据，请先删除部分数值！");
+                return false;
+            }
+            var x=getNum();
+            if(x){
+                var li=document.createElement("li");
+                li.innerText=x;
+                li.style.height=x+"px";
+                li.style.marginTop=100-x+"px";
+                if(!result.firstChild){
+                    result.appendChild(li);
+                }else {
+                    result.insertBefore(li,result.firstChild);
+                }
+            }else return false;
+        };
+        //左侧出remove第一个子节点
+        outL.onclick=function () {
+            var li=result.getElementsByTagName("li");
+            if(li.length<0) return false;
+            result.removeChild(result.firstChild);
+        };
+        //右侧入 appedChild插入最后子节点
+        inR.onclick=function () {
+            var max=result.getElementsByTagName("li");
+            if(max.length>=60){
+                alert("最大60组数据，请先删除部分数值！");
+                return false;
+            }
+            var x = getNum();
+            if (x) {
+                var li=document.createElement("li");
+                li.innerText = x;
+                li.style.height=x+"px";
+                li.style.marginTop=100-x+"px";
+                result.appendChild(li);
+            }else return false;
+        };
+            //右侧出  remove最后一个子节点
+            outR.onclick = function () {
+                var li=result.getElementsByTagName("li");
+                if(li.length<0) return false;
+                result.removeChild(result.lastChild);
+            }
+    }
+    init();
+</script>
+</body>
+</html>
