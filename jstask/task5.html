@@ -17,18 +17,13 @@
             height: 30px;
             margin-right: 10px;
         }
-        #main ul{
-            margin-top: 20px;
-            height: 100px;
-            border: 1px solid #999;
-        }
-        #main ul li{
+
+        ul li{
             width: 20px;
             display: inline-block;
             background: red;
-            text-align: center;
             margin-right: 2px;
-            float: left;
+            vertical-align: bottom;
             font-size: 0;
         }
     </style>
@@ -40,10 +35,9 @@
     <input type="submit" id="outL" value="左侧出">
     <input type="submit" id="inR" value="右侧入">
     <input type="submit" id="outR" value="右侧出">
+    <input type="submit" id="sort" value="升序">
 </div>
-<div id="main">
-    <ul id="queue"></ul>
-</div>
+<ul id="queue"></ul>
 <script>
     var result=document.getElementById("queue");
     var num=document.getElementById("num");
@@ -60,11 +54,11 @@
         }
     }
     function init() {
-        num.focus();
         var inL=document.getElementById("inL");
         var outL=document.getElementById("outL");
         var inR=document.getElementById("inR");
         var outR=document.getElementById("outR");
+        var sort=document.getElementById("sort");
         //左侧入insert第一个子节点
         inL.onclick=function () {
             var max=result.getElementsByTagName("li");
@@ -77,7 +71,6 @@
                 var li=document.createElement("li");
                 li.innerText=x;
                 li.style.height=x+"px";
-                li.style.marginTop=100-x+"px";
                 if(!result.firstChild){
                     result.appendChild(li);
                 }else {
@@ -103,16 +96,31 @@
                 var li=document.createElement("li");
                 li.innerText = x;
                 li.style.height=x+"px";
-                li.style.marginTop=100-x+"px";
                 result.appendChild(li);
             }else return false;
         };
-            //右侧出  remove最后一个子节点
-            outR.onclick = function () {
-                var li=result.getElementsByTagName("li");
-                if(li.length<0) return false;
-                result.removeChild(result.lastChild);
+        //右侧出  remove最后一个子节点
+        outR.onclick = function () {
+            var li = result.getElementsByTagName("li");
+            if (li.length < 0) return false;
+            result.removeChild(result.lastChild);
+        };
+        //相邻元素排序事件
+        function swap(elem){
+            if(!elem.nextSibling) return false;
+            if(elem.innerText<=elem.nextSibling.innerText) return false;
+            if(elem.innerText>elem.nextSibling.innerText){
+                elem.parentNode.insertBefore(elem.nextSibling,elem);
             }
+        }
+        sort.onclick =function () {
+            var lis = result.getElementsByTagName("li");
+            for(var i=0;i<lis.length;i++){
+                for(var j=0,n=lis.length-1;j<n;j++){
+                    swap(lis[j]);
+                }
+            }
+        } ;
     }
     init();
 </script>
