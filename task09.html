@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复杂页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei";
+            /*border: 1px solid red;*/
+        }
+
+        header {
+            width: 100%;
+            height: 56px;
+            min-width: 525px;
+            background-color: #2189bf;
+        }
+
+        header .brand {
+            width: 36px;
+            height: 36px;
+            background-color: #fff;
+            float: left;
+            margin: 10px 50px;
+            position: relative;
+        }
+
+        header .brand .inner {
+            width: 18px;
+            height: 18px;
+            border-left: 2px solid #2189bf;
+            border-top: 2px solid #2189bf;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        header nav {
+            float: right;
+            line-height: 56px;
+            margin: auto 5%;
+        }
+
+        header nav .login_txt {
+            width: 150px;
+            height: 28px;
+            border: none;
+            border-radius: 28px;
+            margin-right: 20px;
+            text-indent: 3em;
+            background: url("img/icon_search.png") 18px center no-repeat #fff;
+            -webkit-transition: width 0.4s ease-in-out;
+            -moz-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+        header nav .login_txt:focus {
+            width: 310px;
+        }
+
+        header nav .login_btn {
+            border: none;
+            color: #fff;
+            text-indent: 1.5em;
+            background: url("img/icon_login.png") 0 center no-repeat transparent;
+        }
+
+        .container aside {
+            float: left;
+            width: 260px;
+            height: 1024px;
+            background-color: #2a2e3d;
+        }
+
+        .container aside .info {
+            height: 150px;
+            position: relative;
+        }
+
+        .container aside .img_info {
+            background-color: #999;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            position: absolute;
+            top: 20px;
+            left: 45px;
+            padding: 1px;
+        }
+
+        .container aside .img_info .inner {
+            width: 58px;
+            height: 58px;
+            border-radius: 30px;
+            border: 3px solid #2a2e3d;
+        }
+
+        .container aside .user {
+            height: 60px;
+            line-height: 60px;
+            color: #fff;
+            position: absolute;
+            top: 20px;
+            left: 121px;
+        }
+
+        .container aside .info ul {
+            color: #6e8096;
+            text-align: center;
+            position: absolute;
+            top: 100px;
+            left: 20px;
+        }
+
+        .container aside .info ul {
+            font-size: 0;
+        }
+
+        .container aside .info ul li {
+            display: inline-block;
+            padding: 0 30px;
+            font-size: 16px;
+            width: 100px;
+        }
+
+        .container aside .info ul li:first-child {
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .container aside .option {
+            color: #6e8096;
+            text-align: center;
+        }
+
+        .container aside .option > ul {
+            padding-left: 50px;
+        }
+
+        .container aside .option > ul > li {
+            margin: 30px auto;
+            list-style: none;
+            text-align: left;
+        }
+
+        .container article {
+            margin-left: 260px;
+            height: 1024px;
+            background-color: #ededec;
+        }
+
+        .container article nav {
+            height: 30px;
+            line-height: 30px;
+            padding-left: 30px;
+            background-color: #fff;
+        }
+
+        .container article nav ul li {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .container article nav ul li a:link {
+            text-decoration: none;
+            color: #999;
+        }
+        article>div{
+            width: 85%;
+            margin: 20px auto;
+            min-width: 850px;
+        }
+        article .list1{
+            height:85px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        article .list11{
+            padding-top: 16px;
+            margin: 0 20px;
+        }
+        article .list11 div{
+            display: inline-block;
+            color:#999;
+            font-size: 14px;
+            vertical-align: top;
+            margin-right:20px;
+        }
+        article .list11 div p{
+            margin-bottom: 5px;
+        }
+        article .list11 .title{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        article .list11 .huan{
+            padding-right: 30px;
+            position: relative;
+        }
+        article .list11 .s21{
+            position: absolute;
+            background-color: #999;
+            color: #fff;
+            width:18px;
+            height: 18px;
+            text-align: center;
+            top: 18px;
+            right: 0;
+        }
+        article .list11 .size1{
+            width: 75px;
+            height: 25px;
+        }
+        article .list11 .size2{
+            width: 120px;
+            height: 25px;
+        }
+        article .ss .submit{
+            width: 50px;
+            height: 25px;
+            background-color: #2189bf;
+            border: none;
+            border-radius: 2px;
+            margin-top: 15px;
+            color: #fff;
+        }
+        .list2{
+            position: relative;
+            height: 65px;
+            text-align: center;
+        }
+        .list2 .h1{
+            float: left;
+            width: 30px;
+            height: 65px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .list2 ul{
+            margin-left: 33px;
+            margin-right: 168px;
+
+        }
+        .list2 ul li{
+            background-color: #fff;
+            padding-top: 5px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            width: 16%;
+            height: 65px;
+
+
+        }
+        .list2 ul li:hover{
+            border-top:4px solid #2aabd2;
+        }
+        .list2 .h2{
+           position: absolute;
+            width: 30px;
+            height: 65px;
+            top:0;
+            right: 135px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        .list2 .h3{
+            position: absolute;
+            top:0;
+            right: 0;
+            height: 65px;
+            line-height: 65px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            width: 130px;
+        }
+        .list2 .tri{
+            display: block;
+            width: 15px;
+            height: 15px;
+            margin-top:25px;
+            transform:rotate(45deg);
+        }
+        .list2 .h1 .tri{
+            margin-left: 10px;
+            border-left:2px solid #999 ;
+            border-bottom:2px solid #999 ;
+        }
+        .list2 .h2 .tri{
+            margin-right: 10px;
+            border-right:2px solid #999 ;
+            border-top:2px solid #999 ;
+        }
+        .list3 .card{
+            font-size: 0;
+        }
+
+        .list3 .card li{
+            display: inline-block;
+            width: 23%;
+            height: 6.4rem;
+            border-left: .3rem solid;
+            padding: 1.2rem 1.4rem;
+            background-color: #fff;
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="brand">
+        <div class="inner"></div>
+    </div>
+    <nav>
+        <div class="login">
+            <input type="text" class="login_txt" placeholder="搜索"/>
+            <button type="submit" class="login_btn">登录</button>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <aside>
+        <section class="info">
+            <div class="img_info">
+                <div class="inner"></div>
+            </div>
+            <div class="user">LinChnnnn</div>
+            <ul>
+                <li>
+                    <p>110</p>
+                    <p>收藏</p>
+                </li>
+                <li>
+                    <p>313</p>
+                    <p>粉丝</p>
+                </li>
+            </ul>
+        </section>
+        <section class="option">
+            <ul>
+                <li>个人报表</li>
+                <li>个人收藏</li>
+                <li>我的分享</li>
+                <li>图库</li>
+                <li>成长记录</li>
+                <li>账户信息</li>
+            </ul>
+        </section>
+    </aside>
+    <article>
+        <nav class="path">
+            <ul>
+                <li><a href="#">C站 /</a></li>
+                <li><a href="#">个人报表 /</a></li>
+                <li><a href="#">文件一 /</a></li>
+                <li><a href="#">文档一</a></li>
+            </ul>
+        </nav>
+        <div class="list1">
+            <div class="list11">
+                <div class="ss">
+                    <p><span class="title">查询项</span>
+                        <select name="num" id="num" class="size1">
+                            <option value="1">第一项</option>
+                        </select>
+                    </p>
+                </div>
+                <div class="ss huan">
+                    <p>
+                        <span class="title">买方</span>
+                        <select name="num" id="numA" class="size2">
+                            <option value="1">第一项</option>
+                        </select>
+                    </p>
+                    <p>
+                        <span class="title">卖方</span>
+                        <select name="num" id="numB" class="size2">
+                            <option value="1">第一项</option>
+                        </select>
+                    </p>
+                    <span class="s21">换</span>
+                </div>
+                <div class="ss">
+                    <p>
+                        <span class="title">日期</span><input type="date" value="2016-04-01" class="size2" placeholder="">
+                        <span class="title">总耗时</span><input type="text" value="8天" class="size1" placeholder="">
+                    </p>
+                    <p>
+                        <span class="title">人数</span><input type="text" value="10人" class="size1" placeholder="">
+                        <span class="title">成交项</span><input type="text" value="10项"  class="size2" placeholder="">
+                    </p>
+                </div>
+                <div class="ss">
+                    <input type="submit" class="submit" value="搜索">
+                </div>
+            </div>
+        </div>
+        <div class="list2">
+            <div class="h1">
+                <span class="tri"></span>
+            </div>
+            <ul>
+                <li>
+                    <p>10:00 am</p>
+                    <p>￥1200</p>
+                </li>
+                <li>
+                    <p>10:00 am</p>
+                    <p>￥1200</p>
+                </li>
+                <li>
+                    <p>10:00 am</p>
+                    <p>￥1200</p>
+                </li>
+                <li>
+                    <p>10:00 am</p>
+                    <p>￥1200</p>
+                </li>
+                <li>
+                    <p>10:00 am</p>
+                    <p>￥1200</p>
+                </li>
+                <li>
+                    <p>10:00 am</p>
+                    <p>￥1200</p>
+                </li>
+            </ul>
+            <div class="h2">
+                <span class="tri"></span>
+            </div>
+            <div class="h3">
+                <p>历史查询</p>
+            </div>
+        </div>
+        <div class="list3">
+            <p>2016年4月份统计</p>
+            <div class="card">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="works"></div>
+        <div class="date"></div>
+        <div class="brands"></div>
+    </article>
+</div>
+
+
+</body>
+</html>
