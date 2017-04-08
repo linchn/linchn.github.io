@@ -8,7 +8,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei";
             /*border: 1px solid red;*/
         }
 
@@ -71,7 +70,7 @@
         .container aside {
             float: left;
             width: 260px;
-            height: 1024px;
+            height: 1200px;
             background-color: #2a2e3d;
         }
 
@@ -147,7 +146,7 @@
 
         .container article {
             margin-left: 260px;
-            height: 1024px;
+            height: 1200px;
             background-color: #ededec;
         }
 
@@ -293,19 +292,143 @@
             border-right:2px solid #999 ;
             border-top:2px solid #999 ;
         }
-        .list3 .card{
-            font-size: 0;
+        .list3{
+            height: 110px;
         }
-
-        .list3 .card li{
-            display: inline-block;
-            width: 23%;
-            height: 6.4rem;
-            border-left: .3rem solid;
-            padding: 1.2rem 1.4rem;
+        .cc{
+            width: 22%;
+            height: 80px;
+            margin-top: 7px;
+            margin-right: 4%;
+            float: left;
             background-color: #fff;
-
+            overflow: hidden;
         }
+        .cc:last-child{
+            margin-right: 0;
+        }
+        .c1{
+            border-left: 4px solid #2b542c;
+        }
+        .c2{
+            border-left: 4px solid #2aabd2;
+        }
+        .c3{
+            border-left: 4px solid #ac2925;
+        }
+        .c4{
+            border-left: 4px solid #d58512;
+        }
+        .cp{
+            float: left;
+            width: 60px;
+            height: 50px;
+            margin: 15px;
+        }
+        .c0{
+            float: right;
+            width: 60px;
+            height: 50px;
+            background-color: #2b542c;
+            margin: 15px;
+        }
+        .c2 .c0{
+            background-color: #2aabd2;
+        }
+        .c3 .c0{
+            background-color: #ac2925;
+        }
+        .c4 .c0{
+            background-color: #d58512;
+        }
+        .list4{
+            height: 360px;
+            margin-bottom: 20px;
+        }
+        .list4 .w1{
+            float: left;
+            border: 1px solid #999;
+            background-color: #fff;
+            border-radius: 5px;
+            width: 59%;
+            height: 360px;
+        }
+        .t1{
+            height: 40px;
+            line-height: 40px;
+            padding-left: 20px;
+            background-color: #ddd;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        .w1 ul{
+            width: 90%;
+            margin: 20px auto;
+        }
+        .w1 .tb{
+            border: 1px solid #999;
+            width: 90%;
+            margin: -21px auto;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .w1 ul li{
+            display: inline-block;
+            border: 1px solid #999;
+            text-align: center;
+            line-height: 30px;
+            background-color: #ddd;
+            width: 85px;
+            height: 30px;
+        }
+        .w1 ul li:first-child{
+            border-bottom:1px solid #fff ;
+            background-color: #fff;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        table.table{
+            border-collapse: collapse;
+            border: 1px solid #999;
+            margin: 30px auto;
+        }
+        table.table td{
+            border-collapse: collapse;
+            border: 1px solid #999;
+            padding: 5px;
+            width: 100px;
+            height: 30px;
+        }
+        table.table tr:first-child td:first-child{
+            background-color: #eee;
+        }
+        .list4 .w2{
+            float: right;
+            height: 360px;
+            border-radius: 5px;
+            border: 1px solid #999;
+            background-color: #fff;
+            width: 40%;
+        }
+        .list5 .f1{
+            float: left;
+            height: 360px;
+            border-radius: 5px;
+            border: 1px solid #999;
+            background-color: #fff;
+            width: 40%;
+        }
+        .list5 .f2{
+            float: right;
+            border: 1px solid #999;
+            background-color: #fff;
+            border-radius: 5px;
+            width: 59%;
+            height: 360px;
+        }
+
 
 
 
@@ -440,17 +563,102 @@
         <div class="list3">
             <p>2016年4月份统计</p>
             <div class="card">
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+                <div class="cc c1">
+                    <div class="cp">
+                        <p>133311</p>
+                        <p>成交量</p>
+                    </div>
+                    <div class="c0"></div>
+                </div>
+                <div class="cc c2">
+                    <div class="cp">
+                        <p>133311</p>
+                        <p>成交量</p>
+                    </div>
+                    <div class="c0"></div>
+                </div>
+                <div class="cc c3">
+                    <div class="cp">
+                        <p>133311</p>
+                        <p>成交量</p>
+                    </div>
+                    <div class="c0"></div>
+                </div>
+                <div class="cc c4">
+                    <div class="cp">
+                        <p>133311</p>
+                        <p>成交量</p>
+                    </div>
+                    <div class="c0"></div>
+                </div>
             </div>
         </div>
-        <div class="works"></div>
-        <div class="date"></div>
-        <div class="brands"></div>
+        <div class="list4">
+            <div class="w1">
+                <div class="t1">第一组项目</div>
+                <ul>
+                    <li>项目一</li>
+                    <li>项目一</li>
+                    <li>项目一</li>
+                    <li>项目一</li>
+                    <li>项目一</li>
+                </ul>
+                <div class="tb">
+                        <div class="tp">
+                            <table class="table">
+                                <tr>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                </tr>
+                                <tr>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                </tr>
+                                <tr>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                </tr>
+                                <tr>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                </tr>
+                                <tr>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                </tr>
+                                <tr>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                    <td>购买材料一</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="w2">
+                <div class="t1">第一组项目</div>
+            </div>
+        </div>
+        <div class="list5">
+            <div class="f1">
+                <div class="t1">第一组项目</div>
+            </div>
+            <div class="f2">
+                <div class="t1">第一组项目</div>
+            </div>
+        </div>
     </article>
 </div>
 
