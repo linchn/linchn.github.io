@@ -10,7 +10,6 @@
             box-sizing: border-box;
             /*border: 1px solid red;*/
         }
-
         header {
             width: 100%;
             height: 56px;
@@ -216,7 +215,7 @@
             width: 120px;
             height: 25px;
         }
-        article .ss .submit{
+        .submit{
             width: 50px;
             height: 25px;
             background-color: #2189bf;
@@ -246,7 +245,7 @@
         .list2 ul li{
             background-color: #fff;
             padding-top: 5px;
-            border: 1px solid #ddd;
+            border-top: 4px solid #fff;
             display: inline-block;
             width: 16%;
             height: 65px;
@@ -257,7 +256,7 @@
             border-top:4px solid #2aabd2;
         }
         .list2 .h2{
-           position: absolute;
+            position: absolute;
             width: 30px;
             height: 65px;
             top:0;
@@ -395,7 +394,6 @@
             margin: 30px auto;
         }
         table.table td{
-            border-collapse: collapse;
             border: 1px solid #999;
             padding: 5px;
             width: 100px;
@@ -411,6 +409,49 @@
             border: 1px solid #999;
             background-color: #fff;
             width: 40%;
+        }
+        table.table2{
+            border-collapse: collapse;
+            width: 90%;
+            float: right;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        table.table2 td{
+            padding: 5px;
+            height: 45px;
+        }
+        table.table2 tr td:first-child{
+            padding: 5px;
+            width: 95px;;
+            height: 45px;
+        }
+        .pp{
+            float: left;
+            margin-right: 100px;
+        }
+        .table2 .submit{
+            float: right;
+            margin-top: 0;
+        }
+        table.table2 tr:nth-child(2){
+            border-bottom: 1px solid #999;
+            border-top: 1px solid #999;
+        }
+        table.table2 tr:nth-child(2) td:first-child{
+            border-right:1px solid #999;
+        }
+        table.table2 tr:nth-child(3){
+            border-bottom:1px solid #999;
+            height: 145px;
+            vertical-align:top;
+        }
+        table.table2 tr td:last-child{
+            border: 1px solid #fff;
+        }
+        table.table2 tr:nth-child(2) td:last-child{
+            border-bottom:1px solid #999;
+            border-left: none;
         }
         .list5 .f1{
             float: left;
@@ -428,6 +469,109 @@
             width: 59%;
             height: 360px;
         }
+        table.table3{
+            width: 90%;
+            margin: 10px auto;
+            text-align: center;
+            font-size: 6px;
+        }
+        table.table3 td{
+            height: 40px;
+            width: 50px;
+        }
+        table.table3 input{
+            width: 65px;
+            height: 20px;
+            background-color: #fff;
+            border: 1px solid #999;
+        }
+        table.table3 tr:nth-child(2) td{
+            border-top:1px solid #2aabd2;
+            border-bottom: 1px solid #999;
+        }
+        table.table3 .im{
+            color: red;
+        }
+        table.table3 .fo{
+            border: 1px solid #eb9316;
+        }
+        .toptd{
+            font-size:0;
+        }
+        .toptd li{
+            display: inline-block;
+            width:14.2%;
+            font-size: 14px;
+        }
+        table.table4{
+            width: 85%;
+            margin: 20px auto;
+            text-align: center;
+            font-size: 10px;
+            border-collapse: collapse;
+        }
+        table.table4 th{
+            border: 1px solid #999;
+            height: 28px;
+        }
+        table.table4 td{
+            border: 1px solid #999;
+            height: 25px;
+        }
+        .bar{
+            width: 90%;
+            height: 5px;
+            background-color: #ccc;
+            margin: 0 auto;
+        }
+        table.table4 tr td:nth-child(3){
+            border-right: none;
+        }
+        table.table4 tr td:last-child{
+            width: 50%;
+            border-left:none;
+        }
+        .bar .car{
+            height: 5px;
+            background-color: #2aabd2;
+
+        }
+        table.table4 tr:nth-child(2) .car{
+            background-color: #ac2925;
+            width: 90%;
+        }
+        table.table4 tr:nth-child(3) .car{
+            background-color: #985f0d;
+            width: 80%;
+        }
+        table.table4 tr:nth-child(4) .car{
+            background-color: #eb9316;
+            width: 70%;
+        }
+        table.table4 tr:nth-child(5) .car{
+            width: 60%;
+        }
+        table.table4 tr:nth-child(6) .car{
+            width: 55%;
+        }
+        table.table4 tr:nth-child(7) .car{
+            width: 50%;
+        }
+        table.table4 tr:nth-child(8) .car{
+            width: 45%;
+        }
+        table.table4 tr:nth-child(9) .car{
+            width: 40%;
+        }
+        table.table4 tr:nth-child(10) .car{
+            width: 35%;
+        }
+        table.table4 tr:last-child .car{
+            width: 30%;
+        }
+
+
+
 
 
 
@@ -604,59 +748,360 @@
                     <li>项目一</li>
                 </ul>
                 <div class="tb">
-                        <div class="tp">
-                            <table class="table">
-                                <tr>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                </tr>
-                                <tr>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                </tr>
-                                <tr>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                </tr>
-                                <tr>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                </tr>
-                                <tr>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                </tr>
-                                <tr>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                    <td>购买材料一</td>
-                                </tr>
-                            </table>
-                        </div>
+                    <div class="tp">
+                        <table class="table">
+                            <tr>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                            </tr>
+                            <tr>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                            </tr>
+                            <tr>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                            </tr>
+                            <tr>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                            </tr>
+                            <tr>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                            </tr>
+                            <tr>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                                <td>购买材料一</td>
+                            </tr>
+                        </table>
                     </div>
-
+                </div>
             </div>
             <div class="w2">
                 <div class="t1">第一组项目</div>
+                <div class="tb2">
+                    <table class="table2">
+                        <tr>
+                            <td colspan="2">
+                                <p>标题</p>
+                                <p>项目编号三</p>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>价格</p>
+                                <p>￥158</p>
+                            </td>
+                            <td>
+                                <p>负责人</p>
+                                <p>小A</p>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <p>详细描述</p>
+                                <p>该项目的负责人是......</p>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                    <p class="pp"><input type="checkbox">遵守保密协议</p><input type="submit" class="submit" value="搜索">
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
             </div>
         </div>
         <div class="list5">
             <div class="f1">
-                <div class="t1">第一组项目</div>
+                <div class="t1">日历</div>
+                <table class="table3">
+                    <tr>
+                        <td colspan="7">
+                            <input type="text" placeholder="2016">
+                            <input type="text" placeholder="4月">
+                            <input type="text" placeholder="标注日期">
+                            <input type="button" value="返回今天">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">
+                            <ul class="toptd">
+                                <li>一</li>
+                                <li>二</li>
+                                <li>三</li>
+                                <li>四</li>
+                                <li>五</li>
+                                <li>六</li>
+                                <li>七</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <p>1</p>
+                            <p class="im">愚人节</p>
+                        </td>
+                        <td>
+                            <p class="im">2</p>
+                            <p>廿五</p>
+                        </td>
+                        <td>
+                            <p class="im">3</p>
+                            <p>廿六</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>4</p>
+                            <p>廿七</p>
+                        </td>
+                        <td>
+                            <p>5</p>
+                            <p class="im">清明</p>
+                        </td>
+                        <td>
+                            <p>6</p>
+                            <p>廿九</p>
+                        </td>
+                        <td>
+                            <p>7</p>
+                            <p>三月</p>
+                        </td>
+                        <td>
+                            <p>8</p>
+                            <p>初二</p>
+                        </td>
+                        <td class="fo">
+                            <p class="im">9</p>
+                            <p>初三</p>
+                        </td>
+                        <td>
+                            <p class="im">10</p>
+                            <p>初四</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>11</p>
+                            <p>初五</p>
+                        </td>
+                        <td class="fo">
+                            <p>12</p>
+                            <p>初六</p>
+                        </td>
+                        <td>
+                            <p>13</p>
+                            <p>初七</p>
+                        </td>
+                        <td>
+                            <p>14</p>
+                            <p>初八</p>
+                        </td>
+                        <td>
+                            <p>15</p>
+                            <p>初九</p>
+                        </td>
+                        <td>
+                            <p class="im">16</p>
+                            <p>初十</p>
+                        </td>
+                        <td>
+                            <p class="im">17</p>
+                            <p>十一</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>18</p>
+                            <p>十二</p>
+                        </td>
+                        <td class="fo">
+                            <p>19</p>
+                            <p>十三</p>
+                        </td>
+                        <td>
+                            <p>20</p>
+                            <p>十四</p>
+                        </td>
+                        <td>
+                            <p>21</p>
+                            <p>十五</p>
+                        </td>
+                        <td>
+                            <p>22</p>
+                            <p>十六</p>
+                        </td>
+                        <td>
+                            <p class="im">23</p>
+                            <p>十七</p>
+                        </td>
+                        <td>
+                            <p class="im">24</p>
+                            <p>十八</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>25</p>
+                            <p>十九</p>
+                        </td>
+                        <td>
+                            <p>26</p>
+                            <p>廿十</p>
+                        </td>
+                        <td>
+                            <p>27</p>
+                            <p>廿一</p>
+                        </td>
+                        <td>
+                            <p>28</p>
+                            <p>廿二</p>
+                        </td>
+                        <td>
+                            <p>29</p>
+                            <p>廿三</p>
+                        </td>
+                        <td>
+                            <p class="im">30</p>
+                            <p>廿四</p>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </table>
             </div>
             <div class="f2">
-                <div class="t1">第一组项目</div>
+                <div class="t1">汽车行业品牌榜</div>
+                <table class="table4">
+                    <tr>
+                        <td>排名</td>
+                        <td>品牌</td>
+                        <td>搜索指数</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>大众</td>
+                        <td>48912001</td>
+                        <td>
+                            <div class="bar">
+                                <div class="car"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>丰田</td>
+                        <td>29307333</td>
+                        <td>
+                            <div class="bar">
+                                <div class="car"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>奥迪</td>
+                        <td>23139070</td>
+                        <td>
+                            <div class="bar">
+                                <div class="car"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>本田</td>
+                        <td>22885564</td>
+                        <td>
+                            <div class="bar">
+                                <div class="car"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>福特</td>
+                        <td>22324792</td>
+                        <td>
+                            <div class="bar">
+                                <div class="car"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>宝马</td>
+                        <td>21444077</td>
+                        <td>
+                            <div class="bar">
+                                <div class="car"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>现代</td>
+                        <td>20114969</td>
+                        <td>
+                            <div class="bar">
+                                <div class="car"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>起亚</td>
+                        <td>19251680</td>
+                        <td>
+                            <div class="bar">
+                                <div class="car"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>奔驰</td>
+                        <td>19172837</td>
+                        <td>
+                            <div class="bar">
+                                <div class="car"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>别克</td>
+                        <td>18544027</td>
+                        <td>
+                            <div class="bar">
+                                <div class="car"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </article>
