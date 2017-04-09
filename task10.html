@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            margin: 0;
+            padding: 20px;
+        }
+        .flex-container{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .flex-item{
+            list-style: none;
+            width: 150px;
+            background-color: orangered;
+            margin-top: 20px;
+        }
+        .box1{height: 120px;}
+        .box2{height:100px;}
+        .box3{height: 40px;}
+        .box4{
+            height: 200px;
+            background-color: dodgerblue;
+        }
+        @media (max-width:640px) {
+            .flex-container{align-items: flex-start;}
+            .box4{order: -1;}
+        }
+    </style>
+</head>
+<body>
+<ul class="flex-container">
+    <li class="flex-item box1"></li>
+    <li class="flex-item box2"></li>
+    <li class="flex-item box3"></li>
+    <li class="flex-item box4"></li>
+</ul>
+</body>
+</html>
