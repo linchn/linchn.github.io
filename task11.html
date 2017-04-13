@@ -127,40 +127,34 @@
         .part2-li{
             display: flex;
             margin-top: 15px;
-            justify-content: space-between;
         }
         .part2-li img{
-            width: 100%;
+            width: 122px;
             border: 1px solid #eb9316;
         }
-        .part2-li-box1{
-            flex: 1 50px;
-        }
         .part2-li-box2{
-            flex: 3;
-        }
-        .part2-li-box2{
+            flex: 1;
             display: flex;
             margin-left: 15px;
             flex-flow: row wrap;
             justify-content: space-between;
             align-content: space-between;
-
         }
         .items{
-            width: 48%;
-            height: 45%;
+            width: 49%;
+            height: 50px;
+            margin-bottom: 15px;
             background-color: #eee;
-
-        }
-        .items p{
-            font-size: 16px;
-            margin-top: -11px;
-            margin-left: -32px;
-
+            line-height: 50px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .part3-ul li{
             list-style: none;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .li-div{
             display: flex;
@@ -178,6 +172,7 @@
             display: flex;
             flex-flow: column;
             justify-content: space-between;
+            overflow: hidden;
         }
         .li-div-flex{
             display: flex;
@@ -192,8 +187,14 @@
         .box-br{
             margin-right: 5px;
         }
-        .p-color{
+        .p-txt{
             color: #ccc;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .h2-txt{
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     </style>
 </head>
@@ -279,10 +280,10 @@
                         <img src="img/bear-avatar.png"/>
                     </div>
                     <div class="part2-li-box2">
-                        <div class="items"><p>这是文案</p></div>
-                        <div class="items"><p>这是文案</p></div>
-                        <div class="items"><p>这是文案</p></div>
-                        <div class="items"><p>这是文案</p></div>
+                        <div class="items">这是文案</div>
+                        <div class="items">这是文案</div>
+                        <div class="items">这是文案</div>
+                        <div class="items">这是文案</div>
                     </div>
                 </li>
                 <li class="part2-li">
@@ -290,10 +291,10 @@
                         <img src="img/bear-avatar.png"/>
                     </div>
                     <div class="part2-li-box2">
-                        <div class="items"><p>这是文案</p></div>
-                        <div class="items"><p>这是文案</p></div>
-                        <div class="items"><p>这是文案</p></div>
-                        <div class="items"><p>这是文案</p></div>
+                        <div class="items">这是文案</div>
+                        <div class="items">这是文案</div>
+                        <div class="items">这是文案</div>
+                        <div class="items">这是文案</div>
                     </div>
                 </li>
             </ul>
@@ -308,10 +309,10 @@
                         <img src="img/bear-avatar.png"/>
                     </div>
                     <div class="part2-li-box2">
-                        <div class="items"><p>这是文案</p></div>
-                        <div class="items"><p>这是文案</p></div>
-                        <div class="items"><p>这是文案</p></div>
-                        <div class="items"><p>这是文案</p></div>
+                        <div class="items">这是文案</div>
+                        <div class="items">这是文案</div>
+                        <div class="items">这是文案</div>
+                        <div class="items">这是文案</div>
                     </div>
                 </li>
                 <li class="part2-li">
@@ -319,10 +320,10 @@
                         <img src="img/bear-avatar.png"/>
                     </div>
                     <div class="part2-li-box2">
-                        <div class="items"><p>这是文案</p></div>
-                        <div class="items"><p>这是文案</p></div>
-                        <div class="items"><p>这是文案</p></div>
-                        <div class="items"><p>这是文案</p></div>
+                        <div class="items">这是文案</div>
+                        <div class="items">这是文案</div>
+                        <div class="items">这是文案</div>
+                        <div class="items">这是文案</div>
                     </div>
                 </li>
             </ul>
@@ -335,8 +336,8 @@
                     <img src="img/bear-article.png"/>
                 </div>
                 <div class="box2">
-                    <h2 class="h2-text">这是文章标题字号是22的文章标题</h2>
-                    <p class="p-color">文章来源 6分钟前</p>
+                    <h2 class="h2-txt">这是文章标题字号是22的文章标题</h2>
+                    <p class="p-txt">文章来源 6分钟前</p>
                 </div>
             </li>
             <li class="li-div">
@@ -344,12 +345,12 @@
                     <img src="img/bear-article.png"/>
                 </div>
                 <div class="box2">
-                    <h2 class="h2-text">这是文章标题字号是22的文章标题</h2>
-                    <p class="p-color">文章来源 7分钟前</p>
+                    <h2 class="h2-txt">这是文章标题字号是22的文章标题</h2>
+                    <p class="p-txt">文章来源 7分钟前</p>
                 </div>
             </li>
             <li>
-                <h2 class="h2-text">这也是文章标题字号是22的文章标题</h2>
+                <h2 class="h2-txt">这也是文章标题字号是22的文章标题</h2>
                 <div class="li-div li-div-flex">
                     <div class="box-br">
                         <img src="img/bear-article.png"/>
@@ -361,7 +362,7 @@
                         <img src="img/bear-article.png"/>
                     </div>
                 </div>
-                <p class="p-color">文章来源 7分钟前</p>
+                <p class="p-txt">文章来源 7分钟前</p>
             </li>
         </ul>
     </section>
