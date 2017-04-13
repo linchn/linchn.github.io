@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content ="width=device-width initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>WebApp</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+            /*border: 1px solid red;*/
+        }
+        body{
+            background-color: #ddd;
+            font-family: "Microsoft YaHei UI","Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+        }
+        .header{
+            height: 45px;
+            background: #5bc0de;
+            line-height: 45px;
+            width: 100%;
+            color: #fff;
+        }
+        .header h1{
+            text-align: center;
+        }
+        .back-btn{
+            position: absolute;
+            left: 10px;
+            top:0;
+            color: #fff;
+        }
+        .back-arrow{
+            width: 14px;
+            height: 14px;
+            border-left: 2px solid #fff;
+            border-bottom: 2px solid #fff;
+            display: inline-block;
+            transform: rotate(45deg);
+        }
+        a{
+            text-decoration: none;
+        }
+        section{
+            margin-bottom: 15px;
+            background-color: #fff;
+        }
+        .nav{
+            width: 100%;
+            height: 42px;
+        }
+        .nav-ul{
+            height: 100%;
+            display: flex;
+        }
+        .ul-li{
+            list-style: none;
+            text-align: center;
+        }
+        .nav-ul li{
+            flex-grow: 1;
+            line-height: 42px;
+            border-bottom: 4px solid #fff;
+        }
+        .nav-ul .active{
+            border-bottom: 4px solid #5bc0de;
+        }
+        .nav-ul li a{
+            color: #2b3036;
+        }
+        .gallery img{
+            width: 100%;
+        }
+        .part{
+            padding: 15px;
+        }
+        .part1-tab-ul{
+            display: flex;
+            padding: 15px;
+        }
+        .part1-tab-ul li{
+            flex: 1;
+        }
+        .part1-tab-ul a{
+            display: flex;
+            align-items: center;
+            flex-flow: column wrap;
+            color: #000;
+            margin: auto;
+        }
+        .part1-tab-ul .part1-icon{
+            width: 45px;
+            height: 45px;
+            margin-bottom: 10px;
+            background: url("img/lable.png") center no-repeat;
+            background-size: 100%;
+            border-radius: 45px;
+        }
+        .part1-col-ul{
+            display: flex;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 10px;
+            align-items: baseline;
+        }
+        .part1-col-ul li{
+            flex: 1;
+        }
+        .br-top{
+            border-top: 1px solid #ccc;
+        }
+        .li-border{
+            border-right: 1px solid #ccc;
+        }
+        .part1-col-ul li img{
+            width: 100%;
+        }
+        h5{
+            color: #333;
+            margin: 10px auto;
+        }
+        .part2-outer-ul{
+            display: flex;
+            flex-direction: column;
+        }
+        .part2-li{
+            display: flex;
+            margin-top: 15px;
+            justify-content: space-between;
+        }
+        .part2-li img{
+            width: 100%;
+            border: 1px solid #eb9316;
+        }
+        .part2-li-box1{
+            flex: 1 50px;
+        }
+        .part2-li-box2{
+            flex: 3;
+        }
+        .part2-li-box2{
+            display: flex;
+            margin-left: 15px;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-content: space-between;
+
+        }
+        .items{
+            width: 48%;
+            height: 45%;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+        }
+        .items p{
+            font-size: 16px;
+            position: absolute;
+            top:50%;
+            left:50%;
+            margin-top: -11px;
+            margin-left: -32px;
+
+        }
+        .part3-ul li{
+            list-style: none;
+        }
+        .li-div{
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        .box1{
+            margin-right: 15px;
+            flex: 1;
+        }
+        .box1 img{
+            width: 100%;
+        }
+        .box2{
+            flex: 2;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+        }
+        .li-div-flex{
+            display: flex;
+            justify-content: space-between;
+        }
+        .li-div-flex div{
+            flex-grow: 1;
+        }
+        .li-div-flex img{
+            width: 100%;
+        }
+        .box-br{
+            margin-right: 5px;
+        }
+        .p-color{
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <h1>这是标题</h1>
+    <a href="javascript:history.back();" class="back-btn"><span class="back-arrow"></span>返回</a>
+</header>
+<div class="container">
+    <section class="part1">
+        <nav class="nav">
+            <ul class="nav-ul ul-li">
+                <li class="active"><a href="#">导航</a></li>
+                <li><a href="#">导航</a></li>
+                <li><a href="#">导航</a></li>
+                <li><a href="#">导航</a></li>
+                <li><a href="#">导航</a></li>
+            </ul>
+        </nav>
+        <div class="gallery">
+            <img src="img/1.png"/>
+        </div>
+        <div class="part1-tab">
+            <ul class="part1-tab-ul ul-li">
+                <li>
+                    <a href="#">
+                        <i class="part1-icon"></i>
+                        <span>标签</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="part1-icon"></i>
+                        <span>标签</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="part1-icon"></i>
+                        <span>标签</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="part1-icon"></i>
+                        <span>标签</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="part1-icon"></i>
+                        <span>标签</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="part1-col">
+            <ul class="part1-col-ul br-top ul-li">
+                <li class="li-border">
+                    <img src="img/bear-column-1.png"/>
+                    <h4>分栏一</h4>
+                    <h5>分栏小标题</h5>
+                </li>
+                <li class="li-border">
+                    <img src="img/bear-column-2.png"/>
+                    <h4>分栏一</h4>
+                    <h5>分栏小标题</h5>
+                </li>
+                <li>
+                    <img src="img/bear-column-3.png"/>
+                    <h4>分栏一</h4>
+                    <h5>分栏小标题</h5>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="part2 part">
+        <h2>模块一</h2>
+        <div class="part2-div">
+            <ul class="part2-outer-ul br-top ul-li">
+                <li class="part2-li">
+                    <div class="part2-li-box1">
+                        <img src="img/bear-avatar.png"/>
+                    </div>
+                    <div class="part2-li-box2">
+                        <div class="items"><p>这是文案</p></div>
+                        <div class="items"><p>这是文案</p></div>
+                        <div class="items"><p>这是文案</p></div>
+                        <div class="items"><p>这是文案</p></div>
+                    </div>
+                </li>
+                <li class="part2-li">
+                    <div class="part2-li-box1">
+                        <img src="img/bear-avatar.png"/>
+                    </div>
+                    <div class="part2-li-box2">
+                        <div class="items"><p>这是文案</p></div>
+                        <div class="items"><p>这是文案</p></div>
+                        <div class="items"><p>这是文案</p></div>
+                        <div class="items"><p>这是文案</p></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="part2 part">
+        <h2>模块二</h2>
+        <div class="part2-div">
+            <ul class="part2-outer-ul br-top ul-li">
+                <li class="part2-li">
+                    <div class="part2-li-box1">
+                        <img src="img/bear-avatar.png"/>
+                    </div>
+                    <div class="part2-li-box2">
+                        <div class="items"><p>这是文案</p></div>
+                        <div class="items"><p>这是文案</p></div>
+                        <div class="items"><p>这是文案</p></div>
+                        <div class="items"><p>这是文案</p></div>
+                    </div>
+                </li>
+                <li class="part2-li">
+                    <div class="part2-li-box1">
+                        <img src="img/bear-avatar.png"/>
+                    </div>
+                    <div class="part2-li-box2">
+                        <div class="items"><p>这是文案</p></div>
+                        <div class="items"><p>这是文案</p></div>
+                        <div class="items"><p>这是文案</p></div>
+                        <div class="items"><p>这是文案</p></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="part3 part">
+        <ul class="part3-ul">
+            <li class="li-div">
+                <div class="box1">
+                    <img src="img/bear-article.png"/>
+                </div>
+                <div class="box2">
+                    <h2 class="h2-text">这是文章标题字号是22的文章标题</h2>
+                    <p class="p-color">文章来源 6分钟前</p>
+                </div>
+            </li>
+            <li class="li-div">
+                <div class="box1">
+                    <img src="img/bear-article.png"/>
+                </div>
+                <div class="box2">
+                    <h2 class="h2-text">这是文章标题字号是22的文章标题</h2>
+                    <p class="p-color">文章来源 7分钟前</p>
+                </div>
+            </li>
+            <li>
+                <h2 class="h2-text">这也是文章标题字号是22的文章标题</h2>
+                <div class="li-div li-div-flex">
+                    <div class="box-br">
+                        <img src="img/bear-article.png"/>
+                    </div>
+                    <div class="box-br">
+                        <img src="img/bear-article.png"/>
+                    </div>
+                    <div class="">
+                        <img src="img/bear-article.png"/>
+                    </div>
+                </div>
+                <p class="p-color">文章来源 7分钟前</p>
+            </li>
+        </ul>
+    </section>
+</div>
+
+</body>
+</html>
