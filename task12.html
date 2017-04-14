@@ -38,61 +38,79 @@
         }
         /*轮播效果轮播效果轮播效果轮播效果轮播效果轮播效果*/
         .container{
-            margin: 30px;
             position: relative;
-            overflow: hidden;
+            margin: 30px;
             width: 250px;
             height: 100px;
+            overflow: hidden;
         }
+        .container input{
+            display: none;
+        }
+
         .boxes{
-            width: 800px;
+            width: 300%;
+            height: 100%;
             position: absolute;
             font-size: 0;
-            animation:boxes 5s ease 1;
+            animation:slide 5s ease-out infinite;
         }
-        @keyframes boxes {
-            0%{left: 0;}
-            25%{left: 0;}
-            35%{left: -250px;}
-            55%{left: -250px;}
-            65%{left: -500px;}
-            85%{left: -500px;}
-            100%{left: 0;}
+        @keyframes slide {
+            0% { margin-left:0;}
+            23% { margin-left:0;}
+            33% { margin-left:-250px;}
+            56% { margin-left:-250px;}
+            66% { margin-left:-500px;}
+            90% { margin-left:-500px;}
+            100% {margin-left:0;}
         }
         .box{
             width: 250px;
             height: 100px;
-            display: inline-block;
+            float: left;
         }
-        #box1{
+        .box1{
             background-color: #b92c28;
         }
-        #box2{
+        .box2{
             background-color: #eb9316;
         }
-        #box3{
+        .box3{
             background-color: #2b542c;
         }
-        .btn {
-            margin: 30px;
+
+
+        #btn1:target ~ .boxes{
+            transition: left 1s;
+            animation:none;
+            left: 0;
+        }
+        #btn2:target ~ .boxes {
+            transition: left 1s;
+            animation:none;
+            left: -100%;
+        }
+        #btn3:target ~ .boxes {
+            transition: left 1s;
+            animation:none;
+            left: -200%;
+        }
+
+        .btn{
+            position: absolute;
+            bottom: 0;
+            right: 0;
         }
         .btn a{
-            background-color: rgba(255, 255, 255, 0.5);
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.5);
             color: #fff;
             width: 30px;
             height: 30px;
-            display: inline-block;
+            line-height: 30px;
             text-decoration: none;
             text-align: center;
-            line-height: 30px;
-            position: relative;
-            top:-60px;
-            left: 150px;
         }
-
-
-
-
     </style>
 </head>
 <body>
@@ -153,18 +171,22 @@
         <td>13000</td>
     </tr>
 </table>
-<input type="text" class="input" placeholder="">
+<input type="text" class="input">
 <div class="container">
+    <input type="radio" id="btn1">
+    <input type="radio" id="btn2">
+    <input type="radio" id="btn3">
     <div class="boxes">
-        <div class="box" id="box1"></div>
-        <div class="box" id="box2"></div>
-        <div class="box" id="box3"></div>
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+    </div>
+    <div class="btn">
+        <a href="#btn1">1</a>
+        <a href="#btn2">2</a>
+        <a href="#btn3">3</a>
     </div>
 </div>
-<div class="btn">
-    <a href="#box1">1</a>
-    <a href="#box2">2</a>
-    <a href="#box3">3</a>
-</div>
+
 </body>
 </html>
