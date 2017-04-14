@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3</title>
+    <style>
+        .table{
+            border-collapse: collapse;
+            text-align: left;
+            margin: 30px;
+            width: 250px;
+        }
+        th,td{
+            height: 20px;
+            border: 2px solid #fff;
+        }
+        th{
+            background-color: #000;
+            color: #fff;
+        }
+        tr:nth-child(2),tr:nth-child(3),tr:nth-child(4){
+            color: red;
+        }
+        tr:nth-child(odd){
+            background-color: #ccc;
+        }
+        .input{
+            margin: 30px;
+            width: 100px;
+            height: 20px;
+            border: 1px solid #ccc;
+            transition: all 0.5s ease;
+        }
+        .input:hover{
+            border: 2px solid #2aabd2;
+            box-shadow: 0 0 5px #2aabd2;
+            width: 250px;
+        }
+        /*轮播效果轮播效果轮播效果轮播效果轮播效果轮播效果*/
+        .container{
+            margin: 30px;
+            position: relative;
+            overflow: hidden;
+            width: 250px;
+            height: 100px;
+        }
+        .boxes{
+            width: 800px;
+            position: absolute;
+            font-size: 0;
+            animation:boxes 5s ease 1;
+        }
+        @keyframes boxes {
+            0%{left: 0;}
+            25%{left: 0;}
+            35%{left: -250px;}
+            55%{left: -250px;}
+            65%{left: -500px;}
+            85%{left: -500px;}
+            100%{left: 0;}
+        }
+        .box{
+            width: 250px;
+            height: 100px;
+            display: inline-block;
+        }
+        #box1{
+            background-color: #b92c28;
+        }
+        #box2{
+            background-color: #eb9316;
+        }
+        #box3{
+            background-color: #2b542c;
+        }
+        .btn {
+            margin: 30px;
+        }
+        .btn a{
+            background-color: rgba(255, 255, 255, 0.5);
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            line-height: 30px;
+            position: relative;
+            top:-60px;
+            left: 150px;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<table class="table">
+    <tr>
+        <th>排名</th>
+        <th>网站</th>
+        <th>热度</th>
+    </tr>
+    <tr>
+        <td>1.</td>
+        <td>百度前端技术学院</td>
+        <td>13000</td>
+    </tr>
+    <tr>
+        <td>2.</td>
+        <td>百度前端技术学院</td>
+        <td>13000</td>
+    </tr>
+    <tr>
+        <td>3.</td>
+        <td>百度前端技术学院</td>
+        <td>13000</td>
+    </tr>
+    <tr>
+        <td>4.</td>
+        <td>百度前端技术学院</td>
+        <td>13000</td>
+    </tr>
+    <tr>
+        <td>5.</td>
+        <td>百度前端技术学院</td>
+        <td>13000</td>
+    </tr>
+    <tr>
+        <td>6.</td>
+        <td>百度前端技术学院</td>
+        <td>13000</td>
+    </tr>
+    <tr>
+        <td>7.</td>
+        <td>百度前端技术学院</td>
+        <td>13000</td>
+    </tr>
+    <tr>
+        <td>8.</td>
+        <td>百度前端技术学院</td>
+        <td>13000</td>
+    </tr>
+    <tr>
+        <td>9.</td>
+        <td>百度前端技术学院</td>
+        <td>13000</td>
+    </tr>
+    <tr>
+        <td>10.</td>
+        <td>百度前端技术学院</td>
+        <td>13000</td>
+    </tr>
+</table>
+<input type="text" class="input" placeholder="">
+<div class="container">
+    <div class="boxes">
+        <div class="box" id="box1"></div>
+        <div class="box" id="box2"></div>
+        <div class="box" id="box3"></div>
+    </div>
+</div>
+<div class="btn">
+    <a href="#box1">1</a>
+    <a href="#box2">2</a>
+    <a href="#box3">3</a>
+</div>
+</body>
+</html>
