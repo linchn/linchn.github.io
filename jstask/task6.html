@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task6</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #top{
+            margin: 10px;
+        }
+        #top textarea{
+            display: block;
+            margin-bottom: 30px;
+        }
+        #top input{
+            background: #fff;
+            border: 1px solid #999;
+            height: 30px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        #main{
+            margin: 10px;
+        }
+        ul li{
+            min-width: 50px;
+            display: inline-block;
+            background-color: red;
+            text-align: center;
+            font-size: 16px;
+            margin-right: 5px;
+            padding: 5px;
+        }
+        .active{
+            border: 2px solid #ffff00;
+            background-color: #2aabd2;
+        }
+    </style>
+</head>
+<body>
+<div id="top">
+    <textarea name="num" id="num" cols="30" rows="10" placeholder=""></textarea>
+    <input type="text" id="CX_txt" placeholder="查询文本输入框">
+    <input type="submit" id="CX_btn" value="查询"><br>
+    <input type="submit" id="inL" value="左侧入">
+    <input type="submit" id="inR" value="右侧入">
+    <input type="submit" id="outL" value="左侧出">
+    <input type="submit" id="outR" value="右侧出">
+</div>
+<div id="main">
+    <ul id="queue"></ul>
+</div>
+<script>
+    //取得分割后的数组
+    function getNum() {
+        var arr = [];
+        var num = document.getElementById("num");
+        var dat = num.value.trim();
+        if (!dat) {
+            alert("请输入正确内容");
+            return false;
+        } else {
+            num.value = null;
+            //按非汉字字母数字分割数组，并顺便去掉首位空数组元素
+            // 中间不会有空的数组，因为有正则匹配掉了
+            arr=dat.split(/[^a-zA-Z0-9\u4e00-\u9fa5]+/);
+            if (arr[0]=="") arr.shift();
+            if (arr[arr.length - 1] == "") arr.pop();
+            return arr;
+        }
+    }
+
+
+    function init() {
+        var result = document.getElementById("queue");
+        var inL = document.getElementById("inL");
+        var outL = document.getElementById("outL");
+        var inR = document.getElementById("inR");
+        var outR = document.getElementById("outR");
+        var CX_btn=document.getElementById("CX_btn");
+        var CX_txt=document.getElementById("CX_txt");
+        //左侧入insert第一个子节点
+        inL.onclick = function () {
+            var arr = getNum();
+            if (arr.length < 1) return false;
+            for (var i = arr.length - 1; i >= 0; i--){
+                var li = document.createElement("li");
+                li.innerText = arr[i];
+                if (!result.firstChild){
+                    result.appendChild(li);
+                } else {
+                    result.insertBefore(li,result.firstChild);
+                }
+            }
+        };
+        //右侧入 appedChild插入最后子节点
+        inR.onclick = function () {
+            var arr = getNum();
+            if (arr.length<1) return false;
+            for (var i = 0;i < arr.length; i++){
+                var li = document.createElement("li");
+                li.innerText = arr[i];
+                result.appendChild(li);
+            }
+        };
+        //左侧出remove第一个子节点
+        outL.onclick = function () {
+            var li = result.getElementsByTagName("li");
+            if (li.length < 0) return false;
+            if (!result.firstChild) return false;
+            result.removeChild(result.firstChild);
+        };
+
+        //右侧出  remove最后一个子节点
+        outR.onclick = function () {
+            var li = result.getElementsByTagName("li");
+            if (li.length < 0) return false;
+            if (!result.lastChild) return false;
+            result.removeChild(result.lastChild);
+        };
+
+        //查询模糊匹配内容
+        CX_btn.onclick=function () {
+            var val=CX_txt.value;
+            var count = 0;
+            if (!val) {
+                alert("你没有输入内容！");
+                return false;
+            }
+            for (var i = 0; i < result.childNodes.length; i++){
+                result.childNodes[i].setAttribute("class","");
+                var resVal=result.childNodes[i].innerText;
+                if (resVal.indexOf(val) !== -1){
+                    result.childNodes[i].setAttribute("class","active");
+                    count++;
+                }
+            }
+            if (count == 0) {alert("No found!");}
+        }
+    }
+    init();
+</script>
+</body>
+</html>
