@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task7</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .btns{
+            text-align: center;
+            margin: 30px auto;
+        }
+        .btn{
+            display: inline-block;
+            background-color: #1b6d85;
+            color: #fff;
+            border: none;
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        div.box1{
+            width: 460px;
+            height: 100px;
+            margin: 30px auto;
+        }
+        .box{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #666;
+            width: 50%;
+            height: 80%;
+            margin: 2px;
+            padding: 5px;
+
+        }
+        .active{
+            border: 1px solid red;
+            background-color: #449d44;
+            transition: all 1s ease;
+        }
+
+    </style>
+</head>
+<body>
+<div class="btns">
+    <input type="button" value="前序遍历" class="btn" id="DLR">
+    <input type="button" value="中序遍历" class="btn" id="LDR">
+    <input type="button" value="后序遍历" class="btn" id="LRD">
+</div>
+
+<div class="box box1">
+    <div class="box box2">
+        <div class="box box4">
+            <div class="box box8"></div>
+            <div class="box box9"></div>
+        </div>
+        <div class="box box5">
+            <div class="box box10"></div>
+            <div class="box box11"></div>
+        </div>
+    </div>
+    <div class="box box3">
+        <div class="box box6">
+            <div class="box box12"></div>
+            <div class="box box13"></div>
+        </div>
+        <div class="box box7">
+            <div class="box box14"></div>
+            <div class="box box15"></div>
+        </div>
+    </div>
+</div>
+<script>
+window.onload=function () {
+    var div=document.getElementsByClassName('box1')[0];
+    var DLR=document.getElementById('DLR');
+    var LDR=document.getElementById('LDR');
+    var LRD=document.getElementById('LRD');
+    var elements=[];//
+    //添加按钮行为
+    DLR.onclick=function () {
+        traverseBinaryTree_DLR(div);
+        func('active');
+    };
+    LDR.onclick=function () {
+        traverseBinaryTree_LDR(div);
+        func('active');
+    };
+    LRD.onclick=function () {
+        traverseBinaryTree_LRD(div);
+        func('active');
+    };
+    //添加特定类名
+    function addClass(element,value) {
+        if (!element.className){
+            element.className = value;
+        } else {
+            var tempName = element.className;
+            tempName += ' ';
+            tempName += value;
+            element.className = tempName;
+        }
+    }
+    //移除特定类名
+    function removeClass(element,value) {
+        if(element.className.indexOf(value)!==-1){
+            var tempName=element.className;
+            tempName=tempName.replace(value,'');
+            element.className=tempName;
+        }
+    }
+    //前序遍历二叉树
+    function traverseBinaryTree_DLR(node) {
+        if (node){
+            elements.push(node);
+            traverseBinaryTree_DLR(node.firstElementChild);
+            traverseBinaryTree_DLR(node.lastElementChild);
+        }
+    }
+    //中序遍历二叉树
+    function traverseBinaryTree_LDR(node) {
+        if (node){
+            traverseBinaryTree_LDR(node.firstElementChild);
+            elements.push(node);
+            traverseBinaryTree_LDR(node.lastElementChild);
+        }
+    }
+    //后序遍历二叉树
+    function traverseBinaryTree_LRD(node) {
+        if (node){
+            traverseBinaryTree_LRD(node.firstElementChild);
+            traverseBinaryTree_LRD(node.lastElementChild);
+            elements.push(node);
+        }
+    }
+
+    //延时添加和删除特定类名
+    var func=function (value) {
+        var arr=elements;
+        for(var i=0;i<=arr.length;i++){
+            setTimeout((function (i) {
+                return function () {
+                    for (var j=0;j<arr.length;j++){
+                        removeClass(arr[j],value);
+                    }
+                    if(!arr[i]) return false;
+                    addClass(arr[i],value);
+                }
+            })(i),1000*i)
+        }
+        elements=[];
+    };
+}
+</script>
+</body>
+</html>
