@@ -22,6 +22,11 @@
             height: 30px;
             border-radius: 5px;
         }
+        .txt{
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: #000;
+        }
         div{
             font-size: 12px;
             text-align: center;
@@ -52,6 +57,8 @@
 <div class="button">
     <input type="button" value="前序遍历" class="btn" id="DLR">
     <input type="button" value="后序遍历" class="btn" id="LRD">
+    <input type="text" placeholder="" class="btn txt" id="CX_text">
+    <input type="button" value="查询" class="btn" id="CX">
 </div>
 
 <div class="box box1">
@@ -121,15 +128,22 @@
         var div=document.getElementsByClassName('box1')[0];
         var DLR=document.getElementById('DLR');
         var LRD=document.getElementById('LRD');
+        var CXTxt=document.getElementById('CX_text');
+        var CX=document.getElementById('CX');
         var elements=[];//存储遍历得到的元素
         //添加按钮行为
         DLR.onclick=function () {
-            traverseBinaryTree_DLR(div);
-            func('active');
+            traverseBinaryTree_DLR(div);//取得元素
+            func('active');//添加遍历效果
         };
         LRD.onclick=function () {
             traverseBinaryTree_LRD(div);
             func('active');
+        };
+        CX.onclick=function () {
+            traverseBinaryTree_DLR(div);
+            if(!CXTxt.value) return false;
+            search('active',CXTxt.value);
         };
         //添加特定类名
         function addClass(element,value) {
@@ -163,7 +177,7 @@
         //后序遍历
         function traverseBinaryTree_LRD(node) {
             if (node){
-                for(var i=0;i<node.childElementCount;i++) {
+                for(var i=0,length=node.childElementCount;i<length;i++) {
                     traverseBinaryTree_LRD(node.children[i]);
                 }
                 elements.push(node);
@@ -173,7 +187,7 @@
         var func=function (value) {
             var arr=elements;
             for(var i=0;i<=arr.length;i++){
-                setTimeout((function (i) {
+                 setTimeout((function (i) {
                     return function () {
                         for (var j=0;j<arr.length;j++){
                             removeClass(arr[j],value);
@@ -182,6 +196,21 @@
                         addClass(arr[i],value);
                     }
                 })(i),500*i)
+            }
+            elements=[];
+        };
+
+        //搜索文字
+        var search=function (value,txt) {
+            var arr=elements;
+            for(var i=0;i<arr.length;i++){
+                if(arr[i].childNodes[0].nodeValue.slice(5,-5).indexOf(txt)!=-1){
+                    arr.forEach(function (n) {
+                        removeClass(n,value)
+                    });
+                    addClass(arr[i],value);
+                    alert("找到了！");
+                }
             }
             elements=[];
         };
