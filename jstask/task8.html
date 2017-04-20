@@ -203,15 +203,15 @@
         //搜索文字
         var search=function (value,txt) {
             var arr=elements;
-            for(var i=0;i<arr.length;i++){
-                if(arr[i].childNodes[0].nodeValue.slice(5,-5).indexOf(txt)!=-1){
-                    arr.forEach(function (n) {
-                        removeClass(n,value)
-                    });
-                    addClass(arr[i],value);
-                    alert("找到了！");
+            arr.forEach(function (n) {
+                removeClass(n,value)
+            });
+            arr.forEach(function (n) {
+                var str=n.childNodes[0].nodeValue.trim();
+                if(str===txt){
+                    addClass(n,value);
                 }
-            }
+            });
             elements=[];
         };
     }
