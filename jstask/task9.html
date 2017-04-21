@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task8</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .button{
+            text-align: center;
+            margin: 30px auto;
+        }
+        .btn{
+            display: inline-block;
+            background-color: #1b6d85;
+            color: #fff;
+            border: none;
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        .txt{
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: #000;
+        }
+        div{
+            font-size: 12px;
+            text-align: center;
+        }
+        div.box1{
+            width: 980px;
+            height: 100px;
+            margin: 30px auto;
+        }
+        .box{
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            background-color: #fff;
+            border: 1px solid #666;
+            margin: 4px 2px;
+            padding: 4px 2px;
+            flex: 1;
+        }
+        .active{
+            border: 1px solid red;
+            background-color: #449d44;
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+<div class="button">
+    <input type="button" value="前序遍历" class="btn" id="DLR">
+    <input type="button" value="后序遍历" class="btn" id="LRD">
+    <input type="text" placeholder="" class="btn txt" id="CX_text">
+    <input type="button" value="查询" class="btn" id="CX">
+</div>
+
+<div class="box box1">
+    Super
+    <div class="box box2">
+        Car
+        <div class="box box5">
+            Apple
+            <div class="box box10">
+                pear
+            </div>
+            <div class="box box11">
+                Pig
+            </div>
+            <div class="box box12">
+                Cola
+            </div>
+            <div class="box box13">
+                Soccer
+            </div>
+        </div>
+        <div class="box box6">
+            Phone
+        </div>
+        <div class="box box7">
+            <div class="box box14">
+                Book
+            </div>
+            <div class="box box15">
+                School
+            </div>
+        </div>
+    </div>
+    <div class="box box3">
+        Note
+        <div class="box box8">
+            Human
+            <div class="box box16">
+                Code
+            </div>
+            <div class="box box17">
+                Operate
+            </div>
+            <div class="box box18">
+                Man
+            </div>
+        </div>
+        <div class="box box9">
+            Program
+            <div class="box box19">
+                Element
+                <div class="box box21">
+                    Cat
+                </div>
+            </div>
+            <div class="box box20">
+                Glass
+            </div>
+        </div>
+    </div>
+    <div class="box box4">
+        Fish
+    </div>
+</div>
+<script>
+    window.onload=function () {
+        var div=document.getElementsByClassName('box1')[0];
+        var DLR=document.getElementById('DLR');
+        var LRD=document.getElementById('LRD');
+        var CXTxt=document.getElementById('CX_text');
+        var CX=document.getElementById('CX');
+        var elements=[];//存储遍历得到的元素
+        //添加按钮行为
+        DLR.onclick=function () {
+            traverseBinaryTree_DLR(div);//取得元素
+            func('active');//添加遍历效果
+        };
+        LRD.onclick=function () {
+            traverseBinaryTree_LRD(div);
+            func('active');
+        };
+        CX.onclick=function () {
+            traverseBinaryTree_DLR(div);
+            if(!CXTxt.value) return false;
+            search('active',CXTxt.value);
+        };
+        //添加特定类名
+        function addClass(element,value) {
+            if (!element.className){
+                element.className = value;
+            } else {
+                var tempName = element.className;
+                tempName += ' ';
+                tempName += value;
+                element.className = tempName;
+            }
+        }
+        //移除特定类名
+        function removeClass(element,value) {
+            value=' '+value;
+            if(element.className.indexOf(value)!==-1){
+                var tempName=element.className;
+                tempName=tempName.replace(value,'');
+                element.className=tempName;
+            }
+        }
+        //前序遍历
+        function traverseBinaryTree_DLR(node) {
+            if (node){
+                elements.push(node);
+                for(var i=0,length=node.childElementCount;i<length;i++) {
+                    traverseBinaryTree_DLR(node.children[i]);
+                }
+            }
+        }
+        //后序遍历
+        function traverseBinaryTree_LRD(node) {
+            if (node){
+                for(var i=0,length=node.childElementCount;i<length;i++) {
+                    traverseBinaryTree_LRD(node.children[i]);
+                }
+                elements.push(node);
+            }
+        }
+        //延时添加和删除特定类名
+        var func=function (value) {
+            var arr=elements;
+            for(var i=0;i<=arr.length;i++){
+                 setTimeout((function (i) {
+                    return function () {
+                        for (var j=0;j<arr.length;j++){
+                            removeClass(arr[j],value);
+                        }
+                        if(!arr[i]) return false;
+                        addClass(arr[i],value);
+                    }
+                })(i),500*i)
+            }
+            elements=[];
+        };
+
+        //搜索文字
+        var search=function (value,txt) {
+            var arr=elements;
+            arr.forEach(function (n) {
+                removeClass(n,value)
+            });
+            arr.forEach(function (n) {
+                var str=n.childNodes[0].nodeValue.trim();
+                if(str===txt){
+                    addClass(n,value);
+                }
+            });
+            elements=[];
+        };
+    }
+</script>
+</body>
+</html>
