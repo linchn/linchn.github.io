@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>task8</title>
+    <title>task9</title>
     <style>
         *{
             margin: 0;
@@ -18,7 +18,7 @@
             background-color: #1b6d85;
             color: #fff;
             border: none;
-            width: 100px;
+            width: 80px;
             height: 30px;
             border-radius: 5px;
         }
@@ -26,6 +26,7 @@
             border: 1px solid #ccc;
             background-color: #fff;
             color: #000;
+            width: 120px;
         }
         div{
             font-size: 12px;
@@ -49,16 +50,22 @@
         .active{
             border: 1px solid red;
             background-color: #449d44;
-            transition: all 0.5s ease;
+        }
+        .select{
+            background-color: red;
         }
     </style>
 </head>
 <body>
 <div class="button">
-    <input type="button" value="前序遍历" class="btn" id="DLR">
-    <input type="button" value="后序遍历" class="btn" id="LRD">
-    <input type="text" placeholder="" class="btn txt" id="CX_text">
-    <input type="button" value="查询" class="btn" id="CX">
+    <input type="button" value="深度遍历" class="btn" id="SD">
+    <input type="button" value="广度遍历" class="btn" id="GD">
+    <input type="text" placeholder="要查找的单词" class="btn txt" id="text1">
+    <input type="button" value="正查询" class="btn" id="CX1">
+    <input type="button" value="反查询" class="btn" id="CX2">
+    <input type="button" value="删除" class="btn" id="del">
+    <input type="text" placeholder="要添加的元素内容" class="btn txt" id="text2">
+    <input type="button" value="添加" class="btn" id="add">
 </div>
 
 <div class="box box1">
@@ -124,30 +131,122 @@
     </div>
 </div>
 <script>
-    window.onload=function () {
         var div=document.getElementsByClassName('box1')[0];
-        var DLR=document.getElementById('DLR');
-        var LRD=document.getElementById('LRD');
-        var CXTxt=document.getElementById('CX_text');
-        var CX=document.getElementById('CX');
+        var sd=document.getElementById('SD');
+        var gd=document.getElementById('GD');
+        var text1=document.getElementById('text1');
+        var text2=document.getElementById('text2');
+        var CX1=document.getElementById('CX1');
+        var CX2=document.getElementById('CX2');
+        var del=document.getElementById('del');
+        var add=document.getElementById("add");
         var elements=[];//存储遍历得到的元素
+        var lists=[];
+        var timer;
+
         //添加按钮行为
-        DLR.onclick=function () {
-            traverseBinaryTree_DLR(div);//取得元素
-            func('active');//添加遍历效果
+        sd.onclick = function () {
+            btn_func(DFS,classTime1)
         };
-        LRD.onclick=function () {
-            traverseBinaryTree_LRD(div);
-            func('active');
+        gd.onclick = function () {
+            btn_func(BFS,classTime1);
         };
-        CX.onclick=function () {
-            traverseBinaryTree_DLR(div);
-            if(!CXTxt.value) return false;
-            search('active',CXTxt.value);
+        CX1.onclick = function () {
+            btn_func(DFS,classTime2);
         };
-        //添加特定类名
+        CX2.onclick = function () {
+            btn_func(BFS,classTime2);
+        };
+        del.onclick=function () {
+            lists.forEach(function (e) {
+                if(e.className.indexOf("select")!==-1){
+                    e.remove(this);
+                }
+            });
+        };
+        add.onclick=function () {
+            var  sub=document.createElement("div");
+            var sub_txt=document.createTextNode(text2.value);
+            sub.appendChild(sub_txt);
+            sub.setAttribute("class","box");
+            lists.forEach(function (e) {
+                if(e.className.indexOf("select")!==-1){
+                    e.appendChild(sub);
+                }
+            })
+
+        };
+
+        //设置点击按钮后的函数行为
+        function btn_func(fn,classTime) {
+            reset();//1.清空旧数据和样式
+            fn(div);//自定深度或者广度遍历
+            classTime(elements, "active");//2.定时添加className
+            }
+        //1.重置和清空旧数据
+        function reset() {
+            clearClass("active","select");//重置className还原样式
+            clearTimeout(timer);
+            elements = [];
+        }
+        //清空多个className，比如“active”
+        function clearClass(val1,val2) {
+            lists.forEach(function (e) {
+                removeClass(e, val1);
+                removeClass(e, val2);
+            });
+        }
+        //2.使用递归来隔500ms添加className（数组，类属性值，递增参数）
+        var classTime1 = (function f(arr, value, i) {
+            if (i == undefined) i = 0;//或者函数外部定义i
+            addClass(arr[i], value);//添加className
+            if (i < arr.length) {
+                timer = setTimeout(function () {
+                    clearClass(value);//删除className
+                    f(arr, value, i);//递归操作
+                }, 500);
+                i++;
+            }
+        });
+        //查找到的元素取消其样式
+        var classTime2 = (function f(arr, value, i) {
+            if (i == undefined) i = 0;
+            if (!arr[i]) return false;
+            addClass(arr[i], value);
+            if (arr[i].firstChild.nodeValue.trim()===text1.value){
+                addClass(arr[i],"select");
+            }
+            if (i < arr.length) {
+                timer = setTimeout(function () {
+                    f(arr, value, i);
+                }, 500);
+                i++;
+            }
+        });
+
+        //(深度)遍历
+        function DFS(node) {
+            if (node){
+                elements.push(node);
+                for(var i = 0, length = node.childElementCount; i < length; i++) {
+                    DFS(node.children[i]);
+                }
+            }
+        }
+        //(广度)遍历
+        function BFS(node) {
+            if (node){
+                for(var i = 0, length = node.childElementCount; i < length; i++) {
+                    BFS(node.children[i]);
+                }
+                elements.push(node);
+            }
+        }
+
+        //添加className
         function addClass(element,value) {
-            if (!element.className){
+            if (!element) return false;
+            if (!element.className) {
                 element.className = value;
             } else {
                 var tempName = element.className;
@@ -156,65 +255,38 @@
                 element.className = tempName;
             }
         }
-        //移除特定类名
+        //移除元素className
         function removeClass(element,value) {
-            value=' '+value;
-            if(element.className.indexOf(value)!==-1){
-                var tempName=element.className;
-                tempName=tempName.replace(value,'');
-                element.className=tempName;
+            value = ' ' + value;//避免多次点击遍历按钮class空格增多影响观感
+            if (element.className.indexOf(value) !== -1) {
+                var tempName = element.className;
+                tempName = tempName.replace(value, '');
+                element.className = tempName;
             }
         }
-        //前序遍历
-        function traverseBinaryTree_DLR(node) {
-            if (node){
-                elements.push(node);
-                for(var i=0,length=node.childElementCount;i<length;i++) {
-                    traverseBinaryTree_DLR(node.children[i]);
-                }
-            }
-        }
-        //后序遍历
-        function traverseBinaryTree_LRD(node) {
-            if (node){
-                for(var i=0,length=node.childElementCount;i<length;i++) {
-                    traverseBinaryTree_LRD(node.children[i]);
-                }
-                elements.push(node);
-            }
-        }
-        //延时添加和删除特定类名
-        var func=function (value) {
-            var arr=elements;
-            for(var i=0;i<=arr.length;i++){
-                 setTimeout((function (i) {
-                    return function () {
-                        for (var j=0;j<arr.length;j++){
-                            removeClass(arr[j],value);
-                        }
-                        if(!arr[i]) return false;
-                        addClass(arr[i],value);
-                    }
-                })(i),500*i)
-            }
-            elements=[];
-        };
 
-        //搜索文字
-        var search=function (value,txt) {
-            var arr=elements;
-            arr.forEach(function (n) {
-                removeClass(n,value)
-            });
-            arr.forEach(function (n) {
-                var str=n.childNodes[0].nodeValue.trim();
-                if(str===txt){
-                    addClass(n,value);
+
+
+        function stopPop(e) {
+            if(e) {
+                e.stopPropagation(); //非IE
+            } else {
+                window.event.cancelBubble = true; //IE阻止冒泡方法
+            }
+        }
+        (function () {
+            DFS(div);
+            lists=elements;
+            lists.forEach(function (e) {
+                e.onclick=function () {
+                    reset("active");
+                    addClass(this,'select');
+                    stopPop();//阻止触发父元素
                 }
-            });
-            elements=[];
-        };
-    }
+
+            })
+
+        })();
 </script>
 </body>
 </html>
