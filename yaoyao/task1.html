@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task1</title>
+    <style>
+        p *{
+            font-size: 1.5em;
+            outline: none;
+        }
+        #txt{
+            width: 300px;
+            height: 50px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        #btn{
+            color: #fff;
+            background-color: #2e6da4;
+            border-radius: 10px;
+            border: none;
+            width: 80px;
+            height: 50px;
+        }
+        #tip{
+            padding-left: 3.5em;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <span>名称</span>
+        <input type="text" placeholder="" id="txt"/>
+        <input type="button" value="验证" id="btn"/><br>
+    </p>
+    <p id="tip">必填，长度为4~16个字符</p>
+    <script>
+        var txt=document.getElementById("txt");
+        var btn=document.getElementById("btn");
+        var tip=document.getElementById("tip");
+        btn.onclick=function () {
+            var str=txt.value;
+            var re=/[^A-z0-9\u4E00-\u9FA5]/g;
+            var val=str.replace(/[^x00-xff]/g,'AB');
+            if(str==null||str==''){
+                tip.innerText="姓名不能为空";
+                tip.style.color="red";
+                txt.style.borderColor="red";
+            }else if(re.test(str)) {
+                tip.innerText = "不能含空格等特殊字符";
+                tip.style.color = "orange";
+                txt.style.borderColor = "orange";
+            }else if(val.length<=16&&val.length>=4){
+                tip.innerText="名称格式正确";
+                tip.style.color="green";
+                txt.style.borderColor="green";
+            }else{
+                tip.innerText="长度为4~16个字符";
+                tip.style.color="orange";
+                txt.style.borderColor="orange";
+            }
+        };
+    </script>
+</body>
+</html>
