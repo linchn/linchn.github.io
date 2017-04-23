@@ -70,68 +70,69 @@
 
 <div class="box box1">
     Super
-    <div class="box box2">
+    <div class="box">
         Car
-        <div class="box box5">
+        <div class="box">
             Apple
-            <div class="box box10">
+            <div class="box">
                 pear
             </div>
-            <div class="box box11">
+            <div class="box">
                 Pig
             </div>
-            <div class="box box12">
+            <div class="box">
                 Cola
             </div>
-            <div class="box box13">
+            <div class="box">
                 Soccer
             </div>
         </div>
-        <div class="box box6">
+        <div class="box">
             Phone
         </div>
-        <div class="box box7">
-            <div class="box box14">
+        <div class="box">
+            <div class="box">
                 Book
             </div>
-            <div class="box box15">
+            <div class="box">
                 School
             </div>
         </div>
     </div>
-    <div class="box box3">
+    <div class="box">
         Note
-        <div class="box box8">
+        <div class="box">
             Human
-            <div class="box box16">
+            <div class="box">
                 Code
             </div>
-            <div class="box box17">
+            <div class="box">
                 Operate
             </div>
-            <div class="box box18">
+            <div class="box">
                 Man
             </div>
         </div>
-        <div class="box box9">
+        <div class="box">
             Program
-            <div class="box box19">
+            <div class="box">
                 Element
-                <div class="box box21">
+                <div class="box">
                     Cat
                 </div>
             </div>
-            <div class="box box20">
+            <div class="box">
                 Glass
             </div>
         </div>
     </div>
-    <div class="box box4">
+    <div class="box">
         Fish
     </div>
 </div>
 <script>
         var div=document.getElementsByClassName('box1')[0];
+        var boxes=document.getElementsByClassName("box");
         var sd=document.getElementById('SD');
         var gd=document.getElementById('GD');
         var text1=document.getElementById('text1');
@@ -140,13 +141,13 @@
         var CX2=document.getElementById('CX2');
         var del=document.getElementById('del');
         var add=document.getElementById("add");
-        var elements=[];//存储遍历得到的元素
+        var elements=[];//存储不同遍历方式得到的元素；每次重新开始遍历会清空该数组
         var lists=[];
         var timer;
 
         //添加按钮行为
         sd.onclick = function () {
-            btn_func(DFS,classTime1)
+            btn_func(DFS,classTime1);
         };
         gd.onclick = function () {
             btn_func(BFS,classTime1);
@@ -163,6 +164,7 @@
                     e.remove(this);
                 }
             });
+            listItems();
         };
         add.onclick=function () {
             var  sub=document.createElement("div");
@@ -173,7 +175,8 @@
                 if(e.className.indexOf("select")!==-1){
                     e.appendChild(sub);
                 }
-            })
+            });
+            listItems();
 
         };
 
@@ -213,7 +216,8 @@
             if (i == undefined) i = 0;
             if (!arr[i]) return false;
             addClass(arr[i], value);
-            if (arr[i].firstChild.nodeValue.trim()===text1.value){
+            var val=text1.value;
+            if (arr[i].firstChild.nodeValue.trim()===val){
                 addClass(arr[i],"select");
             }
             if (i < arr.length) {
@@ -266,7 +270,7 @@
         }
 
 
-
+        //阻止点击该元素触发父元素
         function stopPop(e) {
             if(e) {
                 e.stopPropagation(); //非IE
@@ -274,19 +278,19 @@
                 window.event.cancelBubble = true; //IE阻止冒泡方法
             }
         }
-        (function () {
-            DFS(div);
-            lists=elements;
+        function listItems() {
+            //获取所有box属性的类数组，lists不跟elements关联
+            //类数组boxes转化成数组lists
+            lists=Array.prototype.slice.call(boxes);
             lists.forEach(function (e) {
                 e.onclick=function () {
-                    reset("active");
+                    reset();
                     addClass(this,'select');
                     stopPop();//阻止触发父元素
                 }
-
-            })
-
-        })();
+            });
+        }
+        window.onload=listItems;
 </script>
 </body>
 </html>
