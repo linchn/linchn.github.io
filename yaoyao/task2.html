@@ -44,7 +44,7 @@
     </style>
 </head>
 <body>
-<form action="#" onsubmit="return vform(this);" method="post">
+<form action="task2.html" method="post">
     <div>
         <label class="lab">名称</label>
         <input type="text" name="name" placeholder="" id="val"/>
@@ -190,74 +190,24 @@
             }
         }
     });
-    function vmail(field,alerttxt)
-    {
-        with (field)
-        {
-            apos=value.indexOf("@")
-            dotpos=value.lastIndexOf(".")
-            if (apos<1||dotpos-apos<2)
-            {alert(alerttxt);return false}
-            else {return true}
+    btn.onclick=function (event) {
+        var result=1;
+        arr.forEach(function (e) {
+            if(e.style.borderColor=="green"){
+               result+=1;
+            }else {
+                e.onfocus();
+                e.onblur();
+                event.preventDefault();
+            }
+        });
+        if(result==arr.length){
+            alert("提交成功");
+            return true;
+        }else {
+            alert("输入不正确")
         }
-    }
-    function vname(field,alerttxt)
-    {
-        with (field)
-        {
-            if (value<4||value>16)
-            {alert(alerttxt);return false}
-            else {return true}
-        }
-    }
-    function vpassword1(field,alerttxt)
-    {
-        with (field)
-        {
-            if (value<6||value>12)
-            {alert(alerttxt);return false}
-            else {return true}
-        }
-    }
-    function vpassword2(field,alerttxt)
-    {
-        with (field)
-        {
-            if (value!==pas1.value)
-            {alert(alerttxt);return false}
-            else {return true}
-        }
-    }
-    function vtel(field,alerttxt)
-    {
-        with (field)
-        {
-            if (isNaN(value))
-            {alert(alerttxt);return false}
-            else {return true}
-        }
-    }
-
-    function vform(thisform) {
-        with (thisform)
-        {
-            if (vname(name,"无效名称")==false)
-            {name.focus();return false}
-
-            if (vpassword1(password1,"密码无效")==false)
-            {password1.focus();return false}
-
-            if (vpassword2(password2,"密码无效")==false)
-            {password2.focus();return false}
-
-            if (vmail(email,"无效邮箱")==false)
-            {email.focus();return false}
-
-            if (vtel(phone,"无效手机号")==false)
-            {phone.focus();return false}
-        }
-
-    }
+    };
 
 </script>
 </body>
