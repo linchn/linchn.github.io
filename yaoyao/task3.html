@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>radio</title>
+    <style>
+        .show{
+            display: inline;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<form action="">
+    <div id="XY">
+        <input type="radio" name="radio" id="X">
+        <label for="X">在校</label>
+        <input type="radio" name="radio" id="Y">
+        <label for="Y">非在校</label>
+    </div>
+    <div id="M">
+        <label for="A">城市:</label>
+        <select name="A" id="A" onchange="func();">
+            <option value="BJ">北京
+            <option value="SH">上海
+            <option value="FJ">福建
+        </select>
+        <label id="lab" for="BJ">学校:</label>
+        <select name="B" id="BJ" class="school">
+            <option value="1">清华大学
+            <option value="2">北京大学
+        </select>
+        <select name="B" id="SH" class="school">
+            <option value="1">同济大学
+            <option value="2">复旦大学
+        </select>
+        <select name="B" id="FJ" class="school">
+            <option value="1">厦门大学
+            <option value="2">福州大学
+        </select>
+    </div>
+    <div id="N">
+        <label for="D">单位:</label>
+        <input type="text" id="D">
+    </div>
+</form>
+<script >
+    //添加className
+    function addClass(element,value) {
+        if (!element) return false;
+        if (!element.className) {
+            element.className = value;
+        } else {
+            var tempName = element.className;
+            tempName += ' ';
+            tempName += value;
+            element.className = tempName;
+        }
+    }
+
+    function fx() {
+        var x=document.getElementById("X");
+        var y=document.getElementById("Y");
+        var m=document.getElementById("M");
+        var n=document.getElementById("N");
+            x.checked="true";
+            m.style.display="block";
+            n.style.display="none";
+            x.onchange=function () {
+                    m.style.display="block";
+                    n.style.display="none";
+            };
+            y.onchange=function () {
+                    m.style.display="none";
+                    n.style.display="block";
+            }
+    }
+
+    function func() {
+        var a=document.getElementById("A");
+        var lab=document.getElementById("lab");
+        var school=document.getElementsByClassName("school");
+        var arr=Array.prototype.slice.call(school);
+        for (var i=0;i<a.options.length;i++){
+            function fn(val) {
+                if(a.options[i].value==val){
+                    arr.forEach(function (e) {
+                        e.className="school";
+                        if(e.id==val){
+                            addClass(e,"show");
+                        }else{
+                            addClass(e,"hide");
+                        }
+                    });
+                }
+            }
+            if(a.options[i].selected){
+                fn("BJ");
+                fn("SH");
+                fn("FJ");
+            }
+        }
+    }
+    fx();
+    func();
+</script>
+</body>
+</html>
