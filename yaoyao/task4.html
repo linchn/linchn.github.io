@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task4</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /*border: 1px solid red;*/
+        }
+        .A{
+            margin: 50px;
+            width: 500px;
+            position: relative;
+        }
+        .B{
+            width: 40px;
+            height: 40px;
+            background-color: red;
+            position: absolute;
+        }
+        .tab{
+            border-collapse: collapse;
+        }
+        .tab td{
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        .tab tr:first-child td{
+            border:0 !important;
+        }
+        .tab tr:nth-child(2) td{
+            border-top:2px solid #000;
+        }
+        .tab tr:last-child td{
+            border-bottom:2px solid #000;
+        }
+        .tab tr td:first-child{
+            border:0;
+            border-right:2px solid #000;
+        }
+        .tab tr td:last-child{
+            border-right:2px solid #000;
+        }
+
+    </style>
+</head>
+<body>
+<div class="A" id="A">
+    <table class="tab">
+        <tr>
+            <td></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </table>
+    <div class="B" id="B"></div>
+    <input type="text" placeholder="CODE:" id="txt">
+    <input type="button" value="go" id="go">
+    <input type="button" value="left" id="left">
+    <input type="button" value="right" id="right">
+    <input type="button" value="back" id="back">
+</div>
+<script>
+    var block=document.getElementById("B");
+    var txt=document.getElementById("txt");
+    var go=document.getElementById("go");
+    var left=document.getElementById("left");
+    var right=document.getElementById("right");
+    var back=document.getElementById("back");
+    var red=block.style;//红色方块样式
+    var color="10px solid blue";
+
+    //初始化红色方块的蓝色部分和位置
+    function initial() {
+        red.borderRight=color;
+        red.top="240px";
+        red.left="240px";
+    }
+    function reset() {
+        //不可用red.border 全局变量有赋值陷阱
+        //border也不可用"none"
+        block.style.border="";
+    }
+    //获取蓝色部分的位置并返回对应方向
+    //1:top 2:bottom 3:left 4:right
+    function get_direction() {
+        if(red.borderTop){
+            return 1;
+        }else if(red.borderBottom){
+            return 2;
+        }else if(red.borderLeft){
+            return 3;
+        }else if(red.borderRight){
+            return 4;
+        }
+    }
+
+    function move() {
+        var x= get_direction();
+        switch (x){
+            case 1:
+                if(parseInt(red.top)>40)
+                red.top=(parseInt(red.top)-40)+"px";
+                else alert("到头了！");
+                break;
+            case 2:
+                if(parseInt(red.top)<400)
+                red.top=(parseInt(red.top)+40)+"px";
+                else alert("到头了！");
+                break;
+            case 3:
+                if(parseInt(red.left)>40)
+                red.left=(parseInt(red.left)-40)+"px";
+                else alert("到头了！");
+                break;
+            case 4:
+                if(parseInt(red.left)<400)
+                red.left=(parseInt(red.left)+40)+"px";
+                else alert("到头了！");
+                break;
+        }
+    }
+    //调整方向
+    function tunlef() {
+        var x= get_direction();
+        reset();
+        switch (x){
+            case 1:
+                red.borderLeft=color;
+                break;
+            case 2:
+                red.borderRight=color;
+                break;
+            case 3:
+                red.borderBottom=color;
+                break;
+            case 4:
+                red.borderTop=color;
+                break;
+        }
+    };
+    function tunrig() {
+        var x= get_direction();
+        reset();
+        switch (x){
+            case 1:
+                red.borderRight=color;
+                break;
+            case 2:
+                red.borderLeft=color;
+                break;
+            case 3:
+                red.borderTop=color;
+                break;
+            case 4:
+                red.borderBottom=color;
+                break;
+        }
+    };
+    function tunbac() {
+        var x= get_direction();
+        reset();
+        switch (x){
+            case 1:
+                red.borderBottom=color;
+                break;
+            case 2:
+                red.borderTop=color;
+                break;
+            case 3:
+                red.borderRight=color;
+                break;
+            case 4:
+                red.borderLeft=color;
+                break;
+        }
+    };
+    //根据返回的方向进行移动
+    go.onclick= function () {
+        switch (txt.value.toLowerCase()){
+            case "go":
+                move();
+                break;
+            case "tun lef":
+                tunlef();
+                break;
+            case "tun rig":
+                tunrig();
+                break;
+            case "tun bac":
+                tunbac();
+                break;
+        }
+    };
+    left.onclick=function () {
+        tunlef();
+    };
+    right.onclick=function () {
+        tunrig();
+    };
+    back.onclick=function () {
+        tunbac();
+    }
+
+    window.onload=initial();
+</script>
+</body>
+</html>
