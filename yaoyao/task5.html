@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task4</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /*border: 1px solid red;*/
+        }
+        .A{
+            margin: 50px;
+            width: 500px;
+            position: relative;
+        }
+        .B{
+            width: 40px;
+            height: 40px;
+            background-color: red;
+            border-top: 10px solid blue;
+            transform: rotate(0deg);
+            transition: all .4s ease;
+            position: absolute;
+        }
+        .C{
+            text-align: center;
+        }
+        .tab{
+            border-collapse: collapse;
+        }
+        .tab td{
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        .tab tr:first-child td{
+            border:0 !important;
+        }
+        .tab tr:nth-child(2) td{
+            border-top:2px solid #000;
+        }
+        .tab tr:last-child td{
+            border-bottom:2px solid #000;
+        }
+        .tab tr td:first-child{
+            border:0;
+            border-right:2px solid #000;
+        }
+        .tab tr td:last-child{
+            border-right:2px solid #000;
+        }
+        input[type="text"]{
+            margin: 10px;
+            width:175px;
+            height: 40px;
+        }
+        input[type="button"]{
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="A" id="A">
+    <table class="tab">
+        <tr>
+            <td></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </table>
+    <div class="B" id="B"></div>
+    <div class="C">
+        <input type="text" placeholder="CODE:" id="txt"><br>
+        <input type="button" value="左转" id="left">
+        <input type="button" value="右转" id="right">
+        <input type="button" value="反转" id="back">
+        <input type="button" value="start" id="go"><br>
+
+        <input type="button" value="上移" id="ttop">
+        <input type="button" value="下移" id="tback">
+        <input type="button" value="左移" id="tleft">
+        <input type="button" value="右移" id="tright"><br>
+        <input type="button" value="上翻" id="mtop">
+        <input type="button" value="下翻" id="mback">
+        <input type="button" value="左翻" id="mleft">
+        <input type="button" value="右翻" id="mright">
+
+    </div>
+</div>
+<script>
+    var block=document.getElementById("B");
+    var txt=document.getElementById("txt");
+    var go=document.getElementById("go");
+    var left=document.getElementById("left");
+    var right=document.getElementById("right");
+    var back=document.getElementById("back");
+    var tt=document.getElementById("ttop");
+    var tr=document.getElementById("tright");
+    var tl=document.getElementById("tleft");
+    var tb=document.getElementById("tback");
+    var mt=document.getElementById("mtop");
+    var mr=document.getElementById("mright");
+    var ml=document.getElementById("mleft");
+    var mb=document.getElementById("mback");
+
+    //初始化红色方块位置
+    function init() {
+        block.style.transform="rotate(0deg)";
+        block.style.top="240px";
+        block.style.left="200px";
+    }
+
+    //一个参数时是获取当前方向，两个参数是设置旋转方向
+    function angle(element,n){
+        var num,deg;
+        num=parseInt(element.style.transform.substr(7,));
+        if(arguments.length===1){
+            return num%360;
+        }else if(arguments.length===2){
+            deg=num+n*90;
+            element.style.transform="rotate("+deg+"deg)";
+        }
+    }
+
+    //根据参数value选择移动方向
+    function move(value) {
+        var X=parseInt(block.style.left);
+        var Y=parseInt(block.style.top);
+        //value可为angle(block)或者代表方向的1，2，3，4
+            switch (value){
+                case 0:
+                case 1://上
+                    if(Y>40)
+                        block.style.top=(Y-40)+"px";
+                    else return false;
+                    break;
+                case 180:
+                case -180:
+                case 2://下
+                    if(Y<400)
+                        block.style.top=(Y+40)+"px";
+                    else return false;
+                    break;
+                case -90:
+                case 270:
+                case 3://左
+                    if(X>40)
+                        block.style.left=(X-40)+"px";
+                    else return false;
+                    break;
+                case 90:
+                case -270:
+                case 4://右
+                    if(X<400)
+                        block.style.left=(X+40)+"px";
+                    else return false;
+                    break;
+            }
+    }
+
+    left.onclick=function () {
+        angle(block,-1);
+    };
+    right.onclick=function () {
+        angle(block,1);
+    };
+    back.onclick=function () {
+        angle(block,2);
+    };
+    go.onclick=function () {
+        move(angle(block));
+    };
+    tt.onclick=function () {
+        move(1);
+    };
+    tb.onclick=function () {
+        move(2);
+    };
+    tl.onclick=function () {
+        move(3);
+    };
+    tr.onclick=function () {
+        move(4);
+    };
+    mt.onclick=function () {
+        move(1);
+    };
+    mb.onclick=function () {
+        move(2);
+    };
+    ml.onclick=function () {
+        angle(block,-1);
+        move(3);
+    };
+    mr.onclick=function () {
+        angle(block,1);
+        move(4);
+    };
+
+    window.onload=init();
+
+
+</script>
+</body>
+</html>
