@@ -218,7 +218,6 @@
         <input type="button" value="右转" id="right">
         <input type="button" value="反转" id="back">
         <input type="button" value="start" id="go"><br>
-
         <input type="button" value="上移" id="ttop">
         <input type="button" value="下移" id="tback">
         <input type="button" value="左移" id="tleft">
@@ -245,14 +244,12 @@
     var mr=document.getElementById("mright");
     var ml=document.getElementById("mleft");
     var mb=document.getElementById("mback");
-
     //初始化红色方块位置
     function init() {
         block.style.transform="rotate(0deg)";
         block.style.top="240px";
         block.style.left="200px";
     }
-
     //一个参数时是获取当前方向，两个参数是设置旋转方向
     function angle(element,n){
         var num,deg;
@@ -264,7 +261,6 @@
             element.style.transform="rotate("+deg+"deg)";
         }
     }
-
     //根据参数value选择移动方向
     function move(value) {
         var X=parseInt(block.style.left);
@@ -300,7 +296,6 @@
                     break;
             }
     }
-
     left.onclick=function () {
         angle(block,-1);
     };
@@ -326,23 +321,98 @@
         move(4);
     };
     mt.onclick=function () {
+        var num,deg;
+        num=parseInt(block.style.transform.substr(7,));
+        switch (angle(block)%360){
+            case 180:
+                deg=num+2*90;
+                block.style.transform="rotate("+deg+"deg)";
+                break;
+            case 90:
+            case -270:
+                deg=num-90;
+                block.style.transform="rotate("+deg+"deg)";
+                break;
+            case -90:
+            case 270:
+                deg=num+90;
+                block.style.transform="rotate("+deg+"deg)";
+                break;
+            case 0:
+                break;
+        }
         move(1);
     };
     mb.onclick=function () {
+        var num,deg;
+        num=parseInt(block.style.transform.substr(7,));
+        switch (angle(block)){
+            case 0:
+                deg=num+2*90;
+                block.style.transform="rotate("+deg+"deg)";
+                break;
+            case -90:
+            case 270:
+                deg=num-90;
+                block.style.transform="rotate("+deg+"deg)";
+                break;
+            case 90:
+            case -270:
+                deg=num+90;
+                block.style.transform="rotate("+deg+"deg)";
+                break;
+            case 180:
+                break;
+        }
         move(2);
     };
     ml.onclick=function () {
-        angle(block,-1);
+        var num,deg;
+        num=parseInt(block.style.transform.substr(7,));
+        switch (angle(block)%360){
+            case 0:
+                deg=num-90;
+                block.style.transform="rotate("+deg+"deg)";
+                break;
+            case -90:
+            case 270:
+                break;
+            case 90:
+            case -270:
+                deg=num+2*90;
+                block.style.transform="rotate("+deg+"deg)";
+                break;
+            case 180:
+                deg=num+90;
+                block.style.transform="rotate("+deg+"deg)";
+                break;
+        }
         move(3);
     };
     mr.onclick=function () {
-        angle(block,1);
+        var num,deg;
+        num=parseInt(block.style.transform.substr(7,));
+        switch (angle(block)%360){
+            case 0:
+                deg=num+90;
+                block.style.transform="rotate("+deg+"deg)";
+                break;
+            case -90:
+            case 270:
+                deg=num+2*90;
+                block.style.transform="rotate("+deg+"deg)";
+                break;
+            case 90:
+            case -270:
+                break;
+            case 180:
+                deg=num-90;
+                block.style.transform="rotate("+deg+"deg)";
+                break;
+        }
         move(4);
     };
-
     window.onload=init();
-
-
 </script>
 </body>
 </html>
