@@ -197,7 +197,7 @@
     </table>
     <div class="B" id="B"></div>
     <div class="C">
-        <input type="text" placeholder="CODE:" id="txt"><br>
+        <input type="text" placeholder="CODE:" id="txt" disabled><br>
         <input type="button" value="左转" id="left">
         <input type="button" value="右转" id="right">
         <input type="button" value="反转" id="back">
@@ -213,20 +213,11 @@
     </div>
 </div>
 <script>
-    var block=document.getElementById("B");
-    var txt=document.getElementById("txt");
-    var go=document.getElementById("go");
-    var left=document.getElementById("left");
-    var right=document.getElementById("right");
-    var back=document.getElementById("back");
-    var tt=document.getElementById("ttop");
-    var tr=document.getElementById("tright");
-    var tl=document.getElementById("tleft");
-    var tb=document.getElementById("tback");
-    var mt=document.getElementById("mtop");
-    var mr=document.getElementById("mright");
-    var ml=document.getElementById("mleft");
-    var mb=document.getElementById("mback");
+    var block=$("#B");
+    //简化获取ID的代码
+    function $(id){
+        return document.getElementById(id.substr(1,id.length));
+    }
     //初始化红色方块位置
     function init() {
         block.style.transform="rotate(0deg)";
@@ -279,43 +270,43 @@
                     break;
             }
     }
-    left.onclick=function () {
+    $("#left").onclick=function () {
         angle(block,-1);
     };
-    right.onclick=function () {
+    $("#right").onclick=function () {
         angle(block,1);
     };
-    back.onclick=function () {
+    $("#back").onclick=function () {
         angle(block,2);
     };
-    go.onclick=function () {
+    $("#go").onclick=function () {
         move(angle(block));
     };
-    tt.onclick=function () {
+    $("#ttop").onclick=function () {
         move(1);
     };
-    tb.onclick=function () {
+    $("#tback").onclick=function () {
         move(2);
     };
-    tl.onclick=function () {
+    $("#tleft").onclick=function () {
         move(3);
     };
-    tr.onclick=function () {
+    $("#tright").onclick=function () {
         move(4);
     };
-    mt.onclick=function () {
+    $("#mtop").onclick=function () {
         block.style.transform = "rotate(0deg)";
         move(1);
     };
-    mb.onclick=function () {
+    $("#mback").onclick=function () {
         block.style.transform = "rotate(180deg)";
         move(2);
     };
-    ml.onclick=function () {
+    $("#mleft").onclick=function () {
         block.style.transform = "rotate(-90deg)";
         move(3);
     };
-    mr.onclick=function () {
+    $("#mright").onclick=function () {
         block.style.transform = "rotate(90deg)";
         move(4);
     };
