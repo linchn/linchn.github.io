@@ -304,99 +304,19 @@
         move(4);
     };
     mt.onclick=function () {
-        var num,deg;
-        num=parseInt(block.style.transform.substr(7,));
-        switch (angle(block)){
-            case 180:
-            case -180:
-                deg=num+2*90;
-                block.style.transform="rotate("+deg+"deg)";
-                break;
-            case 90:
-            case -270:
-                deg=num-90;
-                block.style.transform="rotate("+deg+"deg)";
-                break;
-            case -90:
-            case 270:
-                deg=num+90;
-                block.style.transform="rotate("+deg+"deg)";
-                break;
-            case 0:
-                break;
-        }
+        block.style.transform = "rotate(0deg)";
         move(1);
     };
     mb.onclick=function () {
-        var num,deg;
-        num=parseInt(block.style.transform.substr(7,));
-        switch (angle(block)){
-            case 0:
-                deg=num-2*90;
-                block.style.transform="rotate("+deg+"deg)";
-                break;
-            case -90:
-            case 270:
-                deg=num-90;
-                block.style.transform="rotate("+deg+"deg)";
-                break;
-            case 90:
-            case -270:
-                deg=num+90;
-                block.style.transform="rotate("+deg+"deg)";
-                break;
-            case 180:
-            case -180:
-                break;
-        }
+        block.style.transform = "rotate(180deg)";
         move(2);
     };
     ml.onclick=function () {
-        var num,deg;
-        num=parseInt(block.style.transform.substr(7,));
-        switch (angle(block)){
-            case 0:
-                deg=num-90;
-                block.style.transform="rotate("+deg+"deg)";
-                break;
-            case -90:
-            case 270:
-                break;
-            case 90:
-            case -270:
-                deg=num-2*90;
-                block.style.transform="rotate("+deg+"deg)";
-                break;
-            case 180:
-            case -180:
-                deg=num+90;
-                block.style.transform="rotate("+deg+"deg)";
-                break;
-        }
+        block.style.transform = "rotate(-90deg)";
         move(3);
     };
     mr.onclick=function () {
-        var num,deg;
-        num=parseInt(block.style.transform.substr(7,));
-        switch (angle(block)){
-            case 0:
-                deg=num+90;
-                block.style.transform="rotate("+deg+"deg)";
-                break;
-            case -90:
-            case 270:
-                deg=num+2*90;
-                block.style.transform="rotate("+deg+"deg)";
-                break;
-            case 90:
-            case -270:
-                break;
-            case 180:
-            case -180:
-                deg=num-90;
-                block.style.transform="rotate("+deg+"deg)";
-                break;
-        }
+        block.style.transform = "rotate(90deg)";
         move(4);
     };
     window.onload=init();
