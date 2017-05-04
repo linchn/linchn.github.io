@@ -29,9 +29,11 @@
     </div>
 </form>
 <script >
+    //简化获取ID对象
     function $(id) {
         return document.getElementById(id);
     }
+    //选中显示未选中则隐藏
     function fx() {
         if($("in").checked){
             $("yes").style.display="";
@@ -41,6 +43,7 @@
             $("no").style.display="";
         }
     }
+    //根据选中的对象来插入对应数组
     function fy() {
         var list={
             BJ:["北京大学","清华大学","人民大学"],
