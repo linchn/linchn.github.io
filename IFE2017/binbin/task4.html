@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task4</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #top{
+            margin: 10px;
+        }
+        #top input{
+            background: #fff;
+            border: 1px solid #999;
+            height: 30px;
+            margin-right: 10px;
+        }
+        #main ul{
+            margin-top: 20px;
+        }
+        #main ul li{
+            min-width: 50px;
+            height: 50px;
+            display: inline-block;
+            background: red;
+            text-align: center;
+            line-height: 50px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="top">
+    <input type="text" id="num" placeholder="只能输入数字">
+    <input type="submit" id="inL" value="左侧入">
+    <input type="submit" id="outL" value="左侧出">
+    <input type="submit" id="inR" value="右侧入">
+    <input type="submit" id="outR" value="右侧出">
+</div>
+<div id="main">
+    <ul id="queue"></ul>
+</div>
+<script>
+    var result=document.getElementById("queue");
+    function getNum() {
+        var num=document.getElementById("num");
+        var dat=num.value;
+        if(isNaN(dat)||!dat){
+            alert("请输入正确数字");
+        }else{
+            num.value=null;
+            return dat;
+        }
+    }
+    function init() {
+        var inL=document.getElementById("inL");
+        var outL=document.getElementById("outL");
+        var inR=document.getElementById("inR");
+        var outR=document.getElementById("outR");
+        //左侧入insert第一个子节点
+        inL.onclick=function () {
+            var x=getNum();
+            if(x){
+                var li=document.createElement("li");
+                li.innerText=x;
+                if(!result.firstChild){
+                    result.appendChild(li);
+                }else {
+                    result.insertBefore(li,result.firstChild);
+                }
+            }else return false;
+        };
+        //左侧出remove第一个子节点
+        outL.onclick=function () {
+            var li=result.getElementsByTagName("li");
+            if(li.length<0) return false;
+            result.removeChild(result.firstChild);
+        };
+        //右侧入 appedChild插入最后子节点
+        inR.onclick=function () {
+            var x=getNum();
+            if (x) {
+                var li = document.createElement("li");
+                li.innerText = x;
+                result.appendChild(li);
+            }
+            //右侧出  remove最后一个子节点
+            outR.onclick = function () {
+                var li=result.getElementsByTagName("li");
+                if(li.length<0) return false;
+                result.removeChild(result.lastChild);
+            };
+        }
+    }
+    init();
+</script>
+</body>
+</html>
