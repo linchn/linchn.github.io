@@ -217,13 +217,13 @@
     //简化获取ID的代码
     function $(id){
         return document.getElementById(id.substr(1,id.length));
+        return document.getElementById(id.slice(1,id.length));
     }
     //初始化红色方块位置
-    function init() {
+    (function () {
         block.style.transform="rotate(0deg)";
         block.style.top="240px";
         block.style.left="200px";
-    }
     //一个参数时是获取当前方向，两个参数是设置旋转方向
     function angle(element,n){
         var num,deg;
@@ -310,7 +310,6 @@
         block.style.transform = "rotate(90deg)";
         move(4);
     };
-    window.onload=init();
 </script>
 </body>
 </html>
