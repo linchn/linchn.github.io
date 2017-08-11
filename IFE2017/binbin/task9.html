@@ -278,7 +278,7 @@
                 window.event.cancelBubble = true; //IE阻止冒泡方法
             }
         }
-        function listItems() {
+        (function listItems() {
             //获取所有box属性的类数组，lists不跟elements关联
             //类数组boxes转化成数组lists
             lists=Array.prototype.slice.call(boxes);
@@ -289,8 +289,8 @@
                     stopPop();//阻止触发父元素
                 }
             });
-        }
-        window.onload=listItems;
+        })();//IIFE
+
 </script>
 </body>
 </html>
